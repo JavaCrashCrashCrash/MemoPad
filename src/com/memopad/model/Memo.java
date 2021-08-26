@@ -10,7 +10,7 @@ public class Memo {
 	}
 	
 	public void printMemo() {
-		System.out.println("=======================");
+		System.out.println("===========Memo===========");
 		System.out.println("title : " + title);
 		System.out.println("content : " + content);
 		System.out.println("=======================");
