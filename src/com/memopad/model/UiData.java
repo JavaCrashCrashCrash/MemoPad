@@ -5,14 +5,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class UiData {
-	private JButton btn1,btn2,btn3;
+	private JButton folderAddBtn, folderDeleteBtn, memoAddBtn, memoDeleteBtn;
 	private JTextArea ta;
 	
 	public UiData() {
 		ta = new JTextArea();
-		btn1 = new JButton("clear");
-		btn2 = new JButton("save");
-		btn3 = new JButton("load");
+		folderAddBtn = new JButton("카테고리 추가");
+		folderDeleteBtn = new JButton("카테고리 삭제");
+		memoAddBtn = new JButton("메모 추가");
+		memoDeleteBtn = new JButton("메모 삭제");
 	}
 	
 	public JTextArea getTa() {
@@ -23,15 +24,19 @@ public class UiData {
 		this.ta = ta;
 	}
 	
-	public JButton getBtn1() {
-		return btn1;
+	public JButton getFolderAddBtn() {
+		return folderAddBtn;
 	}
 	
-	public JButton getBtn2() {
-		return btn2;
+	public JButton getFolderDeleteBtn() {
+		return folderDeleteBtn;
 	}	
 	
-	public JButton getBtn3() {
-		return btn3;
+	public JButton getMemoAddBtn() {
+		return memoAddBtn;
+	}
+	
+	public JButton getMemoDeleteBtn() {
+		return memoDeleteBtn;
 	}
 }

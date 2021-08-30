@@ -1,15 +1,12 @@
 package memopad.main;
 
-import java.io.File;
-
-import com.memopad.model.Folder;
+import com.memopad.controller.ButtonController;
 import com.memopad.model.FolderManager;
-import com.memopad.model.Memo;
 
 public class MemoPad {
 	public static void main(String[] args) {
-//		ButtonController buttonController = new ButtonController();
-//		FolderManager folderManager = new FolderManager();
+		ButtonController buttonController = new ButtonController();
+		FolderManager folderManager = new FolderManager();
 //		
 //		
 //		Folder folder = new Folder("Fold", "C://users/jinseo/Desktop/");
@@ -30,21 +27,19 @@ public class MemoPad {
 //		
 //		folderManager.printFolderAll();
 		
-		
-		
-		String path = "/Users/Kimmoonsu/Desktop/MemoFolder"; // í´ë” ê²½ë¡œ
-		File folder = new File(path);
-
-		// í•´ë‹¹ ë””ë ‰í† ë¦¬ê°€ ì—†ì„ê²½ìš° ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
-		if (!folder.exists()) {
-			try {
-				folder.mkdir(); // í´ë” ìƒì„±í•©ë‹ˆë‹¤.
-				System.out.println("í´ë”ê°€ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.");
-			} catch (Exception e) {
-				e.getStackTrace();
-			}
-		} else {
-			System.out.println("ì´ë¯¸ í´ë”ê°€ ìƒì„±ë˜ì–´ ìˆìŠµë‹ˆë‹¤.");
-		}
+//		String path = "/Users/Kimmoonsu/Desktop/MemoFolder"; // Æú´õ °æ·Î
+//		File folder = new File(path);
+//
+//		// ÇØ´ç µğ·ºÅä¸®°¡ ¾øÀ»°æ¿ì µğ·ºÅä¸®¸¦ »ı¼ºÇÕ´Ï´Ù.
+//		if (!folder.exists()) {
+//			try {
+//				folder.mkdir(); // Æú´õ »ı¼ºÇÕ´Ï´Ù.
+//				System.out.println("Æú´õ°¡ »ı¼ºµÇ¾ú½À´Ï´Ù.");
+//			} catch (Exception e) {
+//				e.getStackTrace();
+//			}
+//		} else {
+//			System.out.println("ÀÌ¹Ì Æú´õ°¡ »ı¼ºµÇ¾î ÀÖ½À´Ï´Ù.");
+//		}
 	}
 }
