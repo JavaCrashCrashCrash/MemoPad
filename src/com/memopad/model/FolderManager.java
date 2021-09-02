@@ -8,6 +8,10 @@ public class FolderManager {
 	public FolderManager() {
 		folders = new ArrayList<>();
 	}
+	
+	public ArrayList<Folder> getFolders() {
+		return folders;
+	}
 
 	public void addFolder(Folder folder) {
 		folders.add(folder);

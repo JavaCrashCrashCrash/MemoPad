@@ -1,28 +1,32 @@
 package com.memopad.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
+import com.memopad.model.FolderManager;
+import com.memopad.model.ObjectManager;
 import com.memopad.model.UiData;
 import com.memopad.view.GUI;
 
 public class ButtonController {
-	private JButton folderAddBtn, folderDeleteBtn, memoAddBtn, memoDeleteBtn;
+	private JButton folderAddBtn, folderDeleteBtn, memoAddBtn, memoDeleteBtn, memoClearBtn;
 	
-	UiData uiData = new UiData();
-	GUI gui = new GUI(uiData);
+	ObjectManager objectManager = new ObjectManager();
+	GUI gui = new GUI(objectManager);
 	
 	public ButtonController() {
-		folderAddBtn = uiData.getFolderAddBtn();
-		folderDeleteBtn = uiData.getFolderDeleteBtn();
-		memoAddBtn = uiData.getMemoAddBtn();
-		memoDeleteBtn = uiData.getMemoDeleteBtn();
-				
+		folderAddBtn = objectManager.uiData.getFolderAddBtn();
+		folderDeleteBtn = objectManager.uiData.getFolderDeleteBtn();
+		memoAddBtn = objectManager.uiData.getMemoAddBtn();
+		memoDeleteBtn = objectManager.uiData.getMemoDeleteBtn();
+		memoClearBtn = objectManager.uiData.getMemoClearBtn();
 		
-//		btn1.addActionListener(null);
-//		// 비우기 버튼 이벤트
-//		btn2.addActionListener(null);
-//		// 저장 버튼 이벤트
-//		btn3.addActionListener(null);
-//		// 불러오기 버튼 이벤트
+		folderAddBtn.addActionListener(new AddFolderController());
+		folderDeleteBtn.addActionListener(new DeleteFolderController());
+		memoAddBtn.addActionListener(new AddMemoController());
+		memoDeleteBtn.addActionListener(new DeleteMemoController());
+		memoClearBtn.addActionListener(new ClearMemoController());
 	}
 }
