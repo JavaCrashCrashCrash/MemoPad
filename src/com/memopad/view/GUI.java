@@ -58,10 +58,12 @@ public class GUI {
 		
 		folderList = uiData.getFolderList();
 		folderList.setBounds(0, 51, 400, 650);
+		folderList.addMouseListener(null);
 		mainPanel.add(folderList);	
 		JScrollPane jsp = new JScrollPane(); // 창 스크롤
 		jsp.setBounds(0, 50, 400, 650); // 스크롤 사이즈 설정
 		mainPanel.add(jsp); // 콘텐츠 판넬에 스크롤 추가
+		
 		
 		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
 		folderAddBtn.setBounds(0, 0, 193, 50);

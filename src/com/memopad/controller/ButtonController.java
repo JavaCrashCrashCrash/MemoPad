@@ -1,17 +1,14 @@
 package com.memopad.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
+import javax.swing.JList;
 
-import com.memopad.model.FolderManager;
 import com.memopad.model.ObjectManager;
-import com.memopad.model.UiData;
 import com.memopad.view.GUI;
 
 public class ButtonController {
 	private JButton folderAddBtn, folderDeleteBtn, memoAddBtn, memoDeleteBtn, memoClearBtn;
+	private JList folderList, memoList;
 	
 	ObjectManager objectManager = new ObjectManager();
 	GUI gui = new GUI(objectManager);
@@ -28,5 +25,8 @@ public class ButtonController {
 		memoAddBtn.addActionListener(new AddMemoController(gui));
 		memoDeleteBtn.addActionListener(new DeleteMemoController());
 		memoClearBtn.addActionListener(new ClearMemoController());
+		
+		folderList = objectManager.uiData.getFolderList();
+		folderList.addMouseListener(new MemoLoadingController(objectManager.uiData));
 	}
 }
