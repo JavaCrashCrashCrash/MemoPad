@@ -1,12 +1,18 @@
 package com.memopad.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FolderManager {
 	ArrayList<Folder> folders;
 	
 	public FolderManager() {
 		folders = new ArrayList<>();
+	}
+	
+	public void testFolderList() {
+		Folder a = new Folder("a", "desk");
+		addFolder(a);
 	}
 	
 	public ArrayList<Folder> getFolders() {

@@ -1,5 +1,7 @@
 package com.memopad.model;
 
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextArea;
@@ -21,9 +23,17 @@ public class UiData {
 		memoArea = new JTextArea();
 		folderList = new JList();
 		memoList = new JList();
+		// test code
 	}
 	
 	public JList getFolderList() {
+		ObjectManager.folderManager.testFolderList();
+		ArrayList<Folder> folders = ObjectManager.folderManager.getFolders();
+		String[] titles = new String[folders.size()];
+		for (int i = 0; i < folders.size(); i++) {
+			titles[i] = folders.get(i).title;
+		}
+		folderList.setListData(titles);
 		return folderList;
 	}
 	

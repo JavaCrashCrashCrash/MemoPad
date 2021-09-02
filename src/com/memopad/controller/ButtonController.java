@@ -23,9 +23,9 @@ public class ButtonController {
 		memoDeleteBtn = objectManager.uiData.getMemoDeleteBtn();
 		memoClearBtn = objectManager.uiData.getMemoClearBtn();
 		
-		folderAddBtn.addActionListener(new AddFolderController());
+		folderAddBtn.addActionListener(new AddFolderController(gui));
 		folderDeleteBtn.addActionListener(new DeleteFolderController());
-		memoAddBtn.addActionListener(new AddMemoController());
+		memoAddBtn.addActionListener(new AddMemoController(gui));
 		memoDeleteBtn.addActionListener(new DeleteMemoController());
 		memoClearBtn.addActionListener(new ClearMemoController());
 	}

@@ -1,6 +1,8 @@
 package com.memopad.view;
 
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -39,8 +41,8 @@ public class GUI {
 		this.uiData = objectManager.uiData;
 		this.folderManager = objectManager.folderManager;
 		this.folders = folderManager.getFolders();
-//		mainUI();
-		memoAddUI();
+		mainUI();
+//		memoUI("catch");
 		// UiData (model) 에서 생성자로 정보 받아오기
 	}
 	
@@ -79,6 +81,17 @@ public class GUI {
 		folderAddFrame.add(folderAddLabel);
 		folderTitleField = uiData.getFolderTitleField();
 		folderTitleField.setBounds(20, 50, 200, 30);
+		folderTitleField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				int a = 10; // red 성분
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					// TODO textField에서 타이틀을 받아서 폴더 추가
+					folderAddFrame.dispose();
+				}
+			}
+		});
+		
 		folderAddFrame.add(folderTitleField);
 	}
 	
@@ -98,6 +111,11 @@ public class GUI {
 		JScrollPane jsp2 = new JScrollPane(); // 창 스크롤
 		jsp2.setBounds(0, 50, 400, 650); // 스크롤 사이즈 설정
 		memoPanel.add(jsp2); // 콘텐츠 판넬에 스크롤 추가
+		
+		memoPanel.add(memoAddBtn = uiData.getMemoAddBtn());
+		memoAddBtn.setBounds(0, 0, 193, 50);
+		memoPanel.add(memoDeleteBtn = uiData.getMemoDeleteBtn());
+		memoDeleteBtn.setBounds(193, 0, 193, 50);
 	}
 	
 	public void memoAddUI() {
