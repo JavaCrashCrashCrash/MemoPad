@@ -2,13 +2,16 @@ package com.memopad.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JList;
 
+import com.memopad.model.Folder;
+import com.memopad.model.ObjectManager;
 import com.memopad.model.UiData;
 
 public class MemoLoadingController implements MouseListener {
-	JList folderList;
+	JList folderList = null;
 	
 	public MemoLoadingController(UiData uiData) {
 		this.folderList = uiData.getFolderList();
@@ -19,7 +22,12 @@ public class MemoLoadingController implements MouseListener {
 		// TODO Auto-generated method stub
 		if (e.getClickCount() == 2) {
 			 int index = folderList.locationToIndex(e.getPoint());
-			 System.out.println(index);
+			 ArrayList<Folder> folders = ObjectManager.folderManager.getFolders();
+			 Folder folder = folders.get(index);
+			 
+			 System.out.println("index : " + index);
+			 System.out.println("title : " + folder.getTitle());
+			 System.out.println("path : " + folder.getPath());
 		}
 	}
 

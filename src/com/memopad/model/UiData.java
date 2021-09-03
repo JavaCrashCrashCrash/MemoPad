@@ -14,11 +14,11 @@ public class UiData {
 	private JList folderList, memoList;
 	
 	public UiData() {
-		folderAddBtn = new JButton("Ä«Å×°í¸® Ãß°¡");
-		folderDeleteBtn = new JButton("Ä«Å×°í¸® »èÁ¦");
-		memoAddBtn = new JButton("¸Þ¸ð Ãß°¡");
-		memoDeleteBtn = new JButton("¸Þ¸ð »èÁ¦");
-		memoClearBtn = new JButton("ºñ¿ì±â");
+		folderAddBtn = new JButton("Ä«ï¿½×°ï¿½ ï¿½ß°ï¿½");
+		folderDeleteBtn = new JButton("Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		memoAddBtn = new JButton("ï¿½Þ¸ï¿½ ï¿½ß°ï¿½");
+		memoDeleteBtn = new JButton("ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		memoClearBtn = new JButton("ï¿½ï¿½ï¿½ï¿½");
 		folderTitleField = new JTextField();
 		memoArea = new JTextArea();
 		folderList = new JList();
@@ -31,7 +31,7 @@ public class UiData {
 		ArrayList<Folder> folders = ObjectManager.folderManager.getFolders();
 		String[] titles = new String[folders.size()];
 		for (int i = 0; i < folders.size(); i++) {
-			titles[i] = folders.get(i).title;
+			titles[i] = folders.get(i).getTitle();
 		}
 		folderList.setListData(titles);
 		return folderList;
