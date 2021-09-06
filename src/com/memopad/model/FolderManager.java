@@ -4,31 +4,33 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FolderManager {
-	ArrayList<Folder> folders;
+	ArrayList<Folder> folderArrayList;
 	
 	public FolderManager() {
-		folders = new ArrayList<>();
+		folderArrayList = new ArrayList<>();
 	}
 	
 	public void testFolderList() {
 		Folder a = new Folder("a", "desk");
+		Folder b = new Folder("b", "top");
 		addFolder(a);
+		addFolder(b);
 	}
 	
-	public ArrayList<Folder> getFolders() {
-		return folders;
+	public ArrayList<Folder> getFolderList() {
+		return folderArrayList;
 	}
 
 	public void addFolder(Folder folder) {
-		folders.add(folder);
+		folderArrayList.add(folder);
 	}
 
 	public void deleteFolder(Folder folder) {
-		folders.remove(folder);
+		folderArrayList.remove(folder);
 	}
 	
 	public void printFolderAll() {
-		for (Folder folder : folders) {
+		for (Folder folder : folderArrayList) {
 			folder.printMe();
 			folder.printMemoAll();
 		}

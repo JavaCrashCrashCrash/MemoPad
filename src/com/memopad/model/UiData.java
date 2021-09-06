@@ -8,27 +8,32 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class UiData {
-	private JButton folderAddBtn, folderDeleteBtn, memoAddBtn, memoDeleteBtn, memoClearBtn;
+	private JButton folderAddBtn, folderDeleteBtn, memoAddBtn, memoDeleteBtn, memoClearBtn, memoSaveBtn;
 	private JTextField folderTitleField;
 	private JTextArea memoArea;
 	private JList folderList, memoList;
 	
 	public UiData() {
-		folderAddBtn = new JButton("Ä«ï¿½×°ï¿½ ï¿½ß°ï¿½");
-		folderDeleteBtn = new JButton("Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½ï¿½");
-		memoAddBtn = new JButton("ï¿½Þ¸ï¿½ ï¿½ß°ï¿½");
-		memoDeleteBtn = new JButton("ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½");
-		memoClearBtn = new JButton("ï¿½ï¿½ï¿½ï¿½");
+		folderAddBtn = new JButton("Ä«Å×°í¸® Ãß°¡");
+		folderDeleteBtn = new JButton("Ä«Å×°í¸® »èÁ¦");
+		memoAddBtn = new JButton("¸Þ¸ð Ãß°¡");
+		memoDeleteBtn = new JButton("¸Þ¸ð »èÁ¦");
+		memoSaveBtn = new JButton("¸Þ¸ð ÀúÀå");
+		memoClearBtn = new JButton("ºñ¿ì±â");
 		folderTitleField = new JTextField();
 		memoArea = new JTextArea();
 		folderList = new JList();
 		memoList = new JList();
 		// test code
+		ObjectManager.folderManager.testFolderList();
 	}
 	
+	public JButton getMemoSaveBtn() {
+		return memoSaveBtn;
+	}
+
 	public JList getFolderList() {
-		ObjectManager.folderManager.testFolderList();
-		ArrayList<Folder> folders = ObjectManager.folderManager.getFolders();
+		ArrayList<Folder> folders = ObjectManager.folderManager.getFolderList();
 		String[] titles = new String[folders.size()];
 		for (int i = 0; i < folders.size(); i++) {
 			titles[i] = folders.get(i).getTitle();

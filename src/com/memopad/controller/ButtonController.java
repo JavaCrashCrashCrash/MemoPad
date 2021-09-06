@@ -27,6 +27,6 @@ public class ButtonController {
 		memoClearBtn.addActionListener(new ClearMemoController());
 		
 		folderList = objectManager.uiData.getFolderList();
-		folderList.addMouseListener(new MemoLoadingController(objectManager.uiData));
+		folderList.addMouseListener(new MemoLoadingController(objectManager));
 	}
 }

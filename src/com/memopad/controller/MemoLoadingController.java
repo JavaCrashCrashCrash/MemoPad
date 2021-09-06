@@ -8,26 +8,25 @@ import javax.swing.JList;
 
 import com.memopad.model.Folder;
 import com.memopad.model.ObjectManager;
-import com.memopad.model.UiData;
+import com.memopad.view.GUI;
 
-public class MemoLoadingController implements MouseListener {
-	JList folderList = null;
+public class MemoLoadingController extends ObjectManager implements MouseListener {
+	ObjectManager objectManager;
+	GUI gui = new GUI(objectManager);
 	
-	public MemoLoadingController(UiData uiData) {
-		this.folderList = uiData.getFolderList();
+	public MemoLoadingController(ObjectManager objectManager) {
+		this.objectManager = objectManager;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getClickCount() == 2) {
-			 int index = folderList.locationToIndex(e.getPoint());
-			 ArrayList<Folder> folders = ObjectManager.folderManager.getFolders();
+			 int index = gui.getFolderList().locationToIndex(e.getPoint());
+			 ArrayList<Folder> folders = ObjectManager.folderManager.getFolderList();
 			 Folder folder = folders.get(index);
 			 
-			 System.out.println("index : " + index);
-			 System.out.println("title : " + folder.getTitle());
-			 System.out.println("path : " + folder.getPath());
+			 gui.memoUI(folder.getTitle());
 		}
 	}
 
