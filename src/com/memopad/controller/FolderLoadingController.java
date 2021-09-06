@@ -10,12 +10,13 @@ import com.memopad.model.Folder;
 import com.memopad.model.ObjectManager;
 import com.memopad.view.GUI;
 
-public class MemoLoadingController extends ObjectManager implements MouseListener {
+public class FolderLoadingController extends ObjectManager implements MouseListener {
 	ObjectManager objectManager;
-	GUI gui = new GUI(objectManager);
+	GUI gui;
 	
-	public MemoLoadingController(ObjectManager objectManager) {
+	public FolderLoadingController(ObjectManager objectManager, GUI gui) {
 		this.objectManager = objectManager;
+		this.gui = gui;
 	}
 
 	@Override
