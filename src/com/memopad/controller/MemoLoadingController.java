@@ -12,10 +12,11 @@ import com.memopad.view.GUI;
 
 public class MemoLoadingController extends ObjectManager implements MouseListener {
 	ObjectManager objectManager;
-	GUI gui = new GUI(objectManager);
+	GUI gui;
 	
-	public MemoLoadingController(ObjectManager objectManager) {
+	public MemoLoadingController(ObjectManager objectManager, GUI gui) {
 		this.objectManager = objectManager;
+		this.gui = gui;
 	}
 
 	@Override
