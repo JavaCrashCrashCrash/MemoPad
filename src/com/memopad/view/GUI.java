@@ -114,17 +114,17 @@ public class GUI {
 		folderAddFrame.add(folderTitleField);
 	}
 	
-	public void memoUI(String folderTitle) {
+	public void memoUI(Folder folder) {
 		memoFrame.setBounds(600, 200, 415, 700);
 		memoFrame.setVisible(true);
 		memoFrame.setResizable(false);
-		memoFrame.setTitle(folderTitle);
+		memoFrame.setTitle(folder.getTitle());
 		memoFrame.setLayout(null);
 		memoFrame.add(memoPanel);
 		memoPanel.setLayout(null);
 		memoPanel.setBounds(0, 0, 400, 700);
 		
-		memoList = uiData.getMemoList();
+		memoList = uiData.getMemoList(folder);
 		memoList.setBounds(0, 50, 400, 650);
 		memoList.setFixedCellHeight(30);
 		memoList.setCellRenderer(new DefaultListCellRenderer(){

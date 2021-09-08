@@ -17,6 +17,12 @@ public class FolderManager {
 		addFolder(b);
 	}
 	
+	
+	public Folder getFolder(int index) {
+		return folderArrayList.get(index);
+	}
+	
+	
 	public ArrayList<Folder> getFolderList() {
 		return folderArrayList;
 	}

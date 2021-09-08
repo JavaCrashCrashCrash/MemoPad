@@ -27,7 +27,7 @@ public class FolderLoadingController extends ObjectManager implements MouseListe
 			 ArrayList<Folder> folders = ObjectManager.folderManager.getFolderList();
 			 Folder folder = folders.get(index);
 			 
-			 gui.memoUI(folder.getTitle());
+			 gui.memoUI(folder);
 		}
 	}
 

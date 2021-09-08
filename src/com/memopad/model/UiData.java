@@ -2,6 +2,7 @@ package com.memopad.model;
 
 import java.util.ArrayList;
 
+
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextArea;
@@ -26,6 +27,8 @@ public class UiData {
 		memoList = new JList();
 		// test code
 		ObjectManager.folderManager.testFolderList();
+		Folder a = ObjectManager.folderManager.getFolder(0);
+		a.testMemoList();
 	}
 	
 	public JButton getMemoSaveBtn() {
@@ -42,7 +45,13 @@ public class UiData {
 		return folderList;
 	}
 	
-	public JList getMemoList() {
+	public JList getMemoList(Folder folder) {
+		ArrayList<Memo> memos = folder.getMemos();
+		String[] memoTitles = new String[memos.size()];
+		for (int i = 0; i < memos.size(); i++) {
+			memoTitles[i] = memos.get(i).getTitle();
+ 		}
+		memoList.setListData(memoTitles);
 		return memoList;
 	}
 	

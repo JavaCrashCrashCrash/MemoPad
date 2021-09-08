@@ -6,7 +6,6 @@ import com.memopad.model.FolderManager;
 public class MemoPad {
 	public static void main(String[] args) {
 		ButtonController buttonController = new ButtonController();
-		System.out.println("Function Test.");
 //		
 //		
 //		Folder folder = new Folder("Fold", "C://users/jinseo/Desktop/");

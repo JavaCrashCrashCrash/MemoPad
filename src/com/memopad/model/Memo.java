@@ -9,6 +9,22 @@ public class Memo {
 		this.content = content;
 	}
 	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public void printMemo() {
 		System.out.println("===========Memo===========");
 		System.out.println("title : " + title);
