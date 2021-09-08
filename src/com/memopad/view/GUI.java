@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import com.memopad.model.Folder;
 import com.memopad.model.FolderManager;
+import com.memopad.model.Memo;
 import com.memopad.model.ObjectManager;
 import com.memopad.model.UiData;
 
@@ -153,6 +154,28 @@ public class GUI {
 		memoAddPanel.setLayout(null);
 		
 		memoArea = uiData.getMemoArea();
+		memoAddPanel.add(memoArea);
+		JScrollPane scroll = new JScrollPane(memoArea);
+		scroll.setBounds(20, 20, 600, 420);
+		memoAddPanel.add(scroll);
+		
+		memoAddPanel.add(memoSaveBtn = uiData.getMemoSaveBtn());
+		memoSaveBtn.setBounds(640, 22, 90, 50);
+		memoAddPanel.add(memoClearBtn = uiData.getMemoClearBtn());
+		memoClearBtn.setBounds(640, 92, 90, 50);
+	}
+	
+	public void memoAddUI(Memo memo) {
+		memoAddFrame.setBounds(500, 300, 765, 500);
+		memoAddFrame.setVisible(true);
+		memoAddFrame.setResizable(false);
+		memoAddFrame.setTitle(memo.getTitle());
+		memoAddFrame.add(memoAddPanel);
+		memoAddPanel.setBounds(0, 0, 800, 500);
+		memoAddPanel.setLayout(null);
+		
+		memoArea = uiData.getMemoArea();
+		memoArea.setText(memo.getContent());
 		memoAddPanel.add(memoArea);
 		JScrollPane scroll = new JScrollPane(memoArea);
 		scroll.setBounds(20, 20, 600, 420);
