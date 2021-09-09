@@ -35,7 +35,7 @@ public class FolderManager {
 	}
 	
 	public void addFolder(String title, String path) {
-		Folder folder = new Folder(title, "C:\\Users\\jang6\\Desktop\\MemoData\\" + title);
+		Folder folder = new Folder(title, path);
 		folderArrayList.add(folder);
 		fileManager.writeFolder(title);
 	}

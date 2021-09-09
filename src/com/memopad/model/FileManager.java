@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 public class FileManager {
 
+	public FileManager() {
+
+	}
+
 	public void writeFolder(String title) {
 		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + title; // 폴더 경로
 		File folder = new File(path);
@@ -19,7 +23,7 @@ public class FileManager {
 			}
 		}
 	}
-	
+
 	public void writeMemo(String folderPath) {
 		String memoPath = "";
 	}
