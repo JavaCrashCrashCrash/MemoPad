@@ -5,6 +5,7 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 
 import com.memopad.model.FileManager;
+import com.memopad.model.FolderManager;
 import com.memopad.model.ObjectManager;
 import com.memopad.view.GUI;
 
@@ -13,12 +14,14 @@ public class ButtonController {
 	private JList folderList, memoList;
 	private JTextField folderTitleField;
 	
-	ObjectManager objectManager = new ObjectManager();
+	ObjectManager objectManager;
 	GUI gui = new GUI(objectManager);
-	FileManager fileManager = new FileManager(objectManager.folderManager);
+	FileManager fileManager;
+	FolderManager folderManager;
 	
-	
-	public ButtonController() {
+	public ButtonController(ObjectManager objectManager) {
+		folderManager = objectManager.folderManager;
+		fileManager = objectManager.fileManager;
 		folderAddBtn = objectManager.uiData.getFolderAddBtn();
 		folderDeleteBtn = objectManager.uiData.getFolderDeleteBtn();
 		memoAddBtn = objectManager.uiData.getMemoAddBtn();
@@ -35,6 +38,6 @@ public class ButtonController {
 		folderList.addMouseListener(new FolderLoadingController(objectManager, gui));
 		
 		folderTitleField = objectManager.uiData.getFolderTitleField();
-		folderTitleField.addKeyListener(new AddFolderController(objectManager, gui, fileManager));
+		folderTitleField.addKeyListener(new AddFolderController(objectManager, gui));
 	}
 }

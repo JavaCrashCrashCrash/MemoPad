@@ -186,4 +186,8 @@ public class GUI {
 		memoAddPanel.add(memoClearBtn = uiData.getMemoClearBtn());
 		memoClearBtn.setBounds(640, 92, 90, 50);
 	}
+	
+	public void setFolderTitleField(String text) {
+		folderTitleField.setText(text);
+	}
 }

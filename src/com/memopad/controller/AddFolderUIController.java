@@ -24,6 +24,5 @@ public class AddFolderUIController implements ActionListener {
 		// TODO Auto-generated method stub
 		gui.folderAddUI();		
 	}
-
 	
 }

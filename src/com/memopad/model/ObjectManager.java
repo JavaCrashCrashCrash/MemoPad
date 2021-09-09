@@ -3,8 +3,13 @@ package com.memopad.model;
 import java.util.ArrayList;
 
 public class ObjectManager {
-	ArrayList<Folder> folderList;
-	public static FolderManager folderManager = new FolderManager();
-	public static FileManager fileManager = new FileManager(folderManager);
-	public UiData uiData = new UiData();
+	public static FolderManager folderManager;
+	public static FileManager fileManager;
+	public static UiData uiData;
+	
+	public ObjectManager() {
+	folderManager = new FolderManager();
+	fileManager = new FileManager();
+	uiData = new UiData();
+	}
 }

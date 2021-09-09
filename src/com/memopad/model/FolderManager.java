@@ -1,13 +1,14 @@
 package com.memopad.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FolderManager {
 	ArrayList<Folder> folderArrayList;
+	FileManager fileManager = new FileManager();
 	
 	public FolderManager() {
 		folderArrayList = new ArrayList<>();
+		FileManager fileManager = new FileManager();
 	}
 	
 	public void testFolderList() {
@@ -29,6 +30,14 @@ public class FolderManager {
 
 	public void addFolder(Folder folder) {
 		folderArrayList.add(folder);
+		fileManager.writeFolder(folder.getTitle());
+		
+	}
+	
+	public void addFolder(String title, String path) {
+		Folder folder = new Folder(title, "C:\\Users\\jang6\\Desktop\\MemoData\\" + title);
+		folderArrayList.add(folder);
+		fileManager.writeFolder(title);
 	}
 
 	public void deleteFolder(Folder folder) {

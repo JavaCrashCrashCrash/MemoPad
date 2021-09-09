@@ -1,11 +1,12 @@
 package memopad.main;
 
 import com.memopad.controller.ButtonController;
-import com.memopad.model.FolderManager;
+import com.memopad.model.ObjectManager;
 
 public class MemoPad {
 	public static void main(String[] args) {
-		ButtonController buttonController = new ButtonController();
+		ObjectManager objectManager = new ObjectManager();
+		ButtonController buttonController = new ButtonController(objectManager);
 //		
 //		
 //		Folder folder = new Folder("Fold", "C://users/jinseo/Desktop/");
