@@ -53,7 +53,7 @@ public class GUI {
 	ObjectManager objectManager;
 	FolderManager folderManager;
 	ArrayList<Folder> folders;
-	// í•„ë“œ (field)
+	// ÇÊµå (field)
 
 	public GUI(ObjectManager objectManager) {
 		this.objectManager = objectManager;
@@ -63,7 +63,7 @@ public class GUI {
 		treeMainUI();
 //		mainUI();
 //		memoUI("first folder");
-		// UiData (model) ì—ì„œ ìƒì„±ìë¡œ ì •ë³´ ë°›ì•„ì˜¤ê¸°
+		// UiData (model) ¿¡¼­ »ı¼ºÀÚ·Î Á¤º¸ ¹Ş¾Æ¿À±â
 	}
 
 	public void treeMainUI() {
@@ -77,7 +77,7 @@ public class GUI {
 		DefaultMutableTreeNode folderNodes[] = new DefaultMutableTreeNode[folders.size()];
 		for (int i = 0; i < folders.size(); i++) {
 			folderNodes[i] = new DefaultMutableTreeNode(folders.get(i).getTitle());
-			folderNodes[i].add(new DefaultMutableTreeNode("Capsicum"));
+			folderNodes[i].add(new DefaultMutableTreeNode("No memo exists."));
 			root.add(folderNodes[i]);
 		}
 
@@ -91,6 +91,7 @@ public class GUI {
 		tree.setShowsRootHandles(true);
 		tree.setRootVisible(false);
 		mainFrame.add(new JScrollPane(tree));
+		tree.setBounds(0, 0, 415, 400);
 
 		selectedLabel = new JLabel();
 		mainFrame.add(selectedLabel, BorderLayout.SOUTH);
@@ -103,20 +104,29 @@ public class GUI {
 		});
 
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setTitle("JTree Example");
-		mainFrame.setSize(200, 200);
+		mainFrame.setTitle("Memo Pad");
+		mainFrame.setBounds(650, 300, 415, 500);
 		mainFrame.setVisible(true);
+		mainFrame.setResizable(false);
+		mainFrame.setLayout(null);
+		
+		mainPanel.setLayout(null); // ¹öÆ° ÆÇ³Ú ·¹ÀÌ¾Æ¿ô ¼³Á¤
+		mainPanel.setBounds(0, 400, 415, 500); // ¹öÆ° ÆÇ³Ú »çÀÌÁî ¼³Á¤
+		mainFrame.add(mainPanel);
+		
+		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
+		folderAddBtn.setBounds(0, 400, 207, 100);
 	}
 
 	public void mainUI() {
-		mainFrame.setBounds(600, 200, 415, 700); // (ì°½ ìœ„ì¹˜ x, ì°½ ìœ„ì¹˜ y, ê°€ë¡œ, ì„¸ë¡œ)
-		mainFrame.setVisible(true); // ì°½ ë³´ì´ê²Œ
-		mainFrame.setResizable(false); // ì°½ í¬ê¸° ì¡°ì ˆ í•  ìˆ˜ ì—†ê²Œ
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ìš°ì¸¡ ìƒë‹¨ Xë¡œ ì¢…ë£Œ
-		mainFrame.setTitle("Memo Pad"); // íƒ€ì´í‹€
-		mainFrame.add(mainPanel); // ë²„íŠ¼ íŒë„¬ ì¶”ê°€
-		mainPanel.setLayout(null); // ë²„íŠ¼ íŒë„¬ ë ˆì´ì•„ì›ƒ ì„¤ì •
-		mainPanel.setBounds(0, 0, 400, 700); // ë²„íŠ¼ íŒë„¬ ì‚¬ì´ì¦ˆ ì„¤ì •
+		mainFrame.setBounds(600, 300, 415, 700); // (Ã¢ À§Ä¡ x, Ã¢ À§Ä¡ y, °¡·Î, ¼¼·Î)
+		mainFrame.setVisible(true); // Ã¢ º¸ÀÌ°Ô
+		mainFrame.setResizable(false); // Ã¢ Å©±â Á¶Àı ÇÒ ¼ö ¾ø°Ô
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ¿ìÃø »ó´Ü X·Î Á¾·á
+		mainFrame.setTitle("Memo Pad"); // Å¸ÀÌÆ²
+		mainFrame.add(mainPanel); // ¹öÆ° ÆÇ³Ú Ãß°¡
+		mainPanel.setLayout(null); // ¹öÆ° ÆÇ³Ú ·¹ÀÌ¾Æ¿ô ¼³Á¤
+		mainPanel.setBounds(0, 0, 400, 700); // ¹öÆ° ÆÇ³Ú »çÀÌÁî ¼³Á¤
 
 		folderList = uiData.getFolderList();
 		folderList.setFixedCellHeight(30);
@@ -128,9 +138,9 @@ public class GUI {
 		folderList.setBounds(0, 50, 400, 650);
 		folderList.addMouseListener(null);
 		mainPanel.add(folderList);
-		JScrollPane jsp = new JScrollPane(); // ì°½ ìŠ¤í¬ë¡¤
-		jsp.setBounds(0, 50, 400, 650); // ìŠ¤í¬ë¡¤ ì‚¬ì´ì¦ˆ ì„¤ì •
-		mainPanel.add(jsp); // ì½˜í…ì¸  íŒë„¬ì— ìŠ¤í¬ë¡¤ ì¶”ê°€
+		JScrollPane jsp = new JScrollPane(); // Ã¢ ½ºÅ©·Ñ
+		jsp.setBounds(0, 50, 400, 650); // ½ºÅ©·Ñ »çÀÌÁî ¼³Á¤
+		mainPanel.add(jsp); // ÄÜÅÙÃ÷ ÆÇ³Ú¿¡ ½ºÅ©·Ñ Ãß°¡
 
 		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
 		folderAddBtn.setBounds(0, 0, 200, 50);
@@ -144,18 +154,18 @@ public class GUI {
 		folderAddFrame.setResizable(false);
 		folderAddFrame.setTitle("Add Category");
 		folderAddFrame.setLayout(null);
-		JLabel folderAddLabel = new JLabel("ì¹´í…Œê³ ë¦¬ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”\n");
+		JLabel folderAddLabel = new JLabel("Ä«Å×°í¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\n");
 		folderAddLabel.setBounds(20, -20, 300, 100);
-		folderAddLabel.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
+		folderAddLabel.setFont(new Font("±¼¸²", Font.PLAIN, 15));
 		folderAddFrame.add(folderAddLabel);
 		folderTitleField = uiData.getFolderTitleField();
 		folderTitleField.setBounds(20, 50, 200, 30);
 		folderTitleField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				int a = 10; // red ì„±ë¶„
+				int a = 10; // red ¼ººĞ
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					// TODO textFieldì—ì„œ íƒ€ì´í‹€ì„ ë°›ì•„ì„œ í´ë” ì¶”ê°€
+					// TODO textField¿¡¼­ Å¸ÀÌÆ²À» ¹Ş¾Æ¼­ Æú´õ Ãß°¡
 					folderAddFrame.dispose();
 				}
 			}
@@ -183,9 +193,9 @@ public class GUI {
 			}
 		});
 		memoPanel.add(memoList);
-		JScrollPane jsp2 = new JScrollPane(); // ì°½ ìŠ¤í¬ë¡¤
-		jsp2.setBounds(0, 50, 400, 650); // ìŠ¤í¬ë¡¤ ì‚¬ì´ì¦ˆ ì„¤ì •
-		memoPanel.add(jsp2); // ì½˜í…ì¸  íŒë„¬ì— ìŠ¤í¬ë¡¤ ì¶”ê°€
+		JScrollPane jsp2 = new JScrollPane(); // Ã¢ ½ºÅ©·Ñ
+		jsp2.setBounds(0, 50, 400, 650); // ½ºÅ©·Ñ »çÀÌÁî ¼³Á¤
+		memoPanel.add(jsp2); // ÄÜÅÙÃ÷ ÆÇ³Ú¿¡ ½ºÅ©·Ñ Ãß°¡
 
 		memoPanel.add(memoAddBtn = uiData.getMemoAddBtn());
 		memoAddBtn.setBounds(0, 0, 200, 50);
