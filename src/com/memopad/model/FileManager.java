@@ -17,7 +17,21 @@ public class FileManager {
 		if (!folder.exists()) {
 			try {
 				folder.mkdir(); // 폴더 생성합니다.
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		} else {
 
+		}
+	}
+
+	public void deleteFolder(String path) {
+
+		File folder = new File(path);
+
+		if (folder.exists()) {
+			try {
+				folder.delete();
 			} catch (Exception e) {
 				e.getStackTrace();
 			}

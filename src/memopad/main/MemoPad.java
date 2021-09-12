@@ -1,6 +1,7 @@
 package memopad.main;
 
 import com.memopad.controller.ButtonController;
+import com.memopad.model.FileManager;
 import com.memopad.model.ObjectManager;
 
 public class MemoPad {

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class FolderManager {
 	ArrayList<Folder> folderArrayList;
-	FileManager fileManager = new FileManager();
+	FileManager fileManager;
 	
 	public FolderManager() {
 		folderArrayList = new ArrayList<>();
-		FileManager fileManager = new FileManager();
+		fileManager = new FileManager();
 	}
 	
 	public void testFolderList() {

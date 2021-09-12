@@ -41,8 +41,8 @@ public class ButtonController {
 		folderList.addMouseListener(new FolderLoadingController(objectManager, gui));
 		
 		folderTitleField = objectManager.uiData.getFolderTitleField();
-		folderTitleField.addKeyListener(new AddFolderController(objectManager, gui));
 		
+//		gui.mainFrame.addT;
 		
 	}
 }

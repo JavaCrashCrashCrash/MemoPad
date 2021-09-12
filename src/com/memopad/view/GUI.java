@@ -24,6 +24,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
+import com.memopad.controller.AddFolderController;
 import com.memopad.model.Folder;
 import com.memopad.model.FolderManager;
 import com.memopad.model.Memo;
@@ -31,8 +32,8 @@ import com.memopad.model.ObjectManager;
 import com.memopad.model.UiData;
 
 public class GUI {
-	JFrame mainFrame = new JFrame();
-	JFrame folderAddFrame = new JFrame();
+	public JFrame mainFrame = new JFrame();
+	public JFrame folderAddFrame = new JFrame();
 	JFrame memoAddFrame = new JFrame();
 	JFrame memoFrame = new JFrame();
 	JPanel mainPanel = new JPanel();
@@ -50,14 +51,14 @@ public class GUI {
 	}
 
 	JTextArea memoArea;
-	JTextField folderTitleField;
+	public JTextField folderTitleField;
 	JButton folderAddBtn, folderDeleteBtn, memoAddBtn, memoDeleteBtn, memoClearBtn, memoSaveBtn;
 
 	UiData uiData;
 	ObjectManager objectManager;
 	FolderManager folderManager;
 	ArrayList<Folder> folders;
-	// �ʵ� (field)
+	// 占십듸옙 (field)
 
 	public GUI(ObjectManager objectManager) {
 		this.objectManager = objectManager;
@@ -68,27 +69,22 @@ public class GUI {
 //		treeMainUI();
 //		mainUI();
 //		memoUI("first folder");
-		// UiData (model) ���� �����ڷ� ���� �޾ƿ���
+		// UiData (model) 占쏙옙占쏙옙 占쏙옙占쏙옙占쌘뤄옙 占쏙옙占쏙옙 占쌨아울옙占쏙옙
 	}
 
 	public void treeMainUI() {
-<<<<<<< HEAD
-//		mainPanel.setLayout(new FlowLayout()); // ��ư �ǳ� ���̾ƿ� ����
-		mainPanel.setSize(415, 500); // ��ư �ǳ� ������ ����
-=======
+//		mainPanel.setLayout(new FlowLayout()); // 버튼 판넬 레이아웃 설정
+		mainPanel.setSize(415, 500); // 버튼 판넬 사이즈 설정
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setTitle("Memo Pad");
 		mainFrame.setBounds(650, 300, 415, 500);
 		mainFrame.setVisible(true);
 		mainFrame.setResizable(false);
 		mainFrame.setLayout(null);
->>>>>>> aeb6a2a19e3f238c759992d4ef044feed68da0fe
 
 		JTree tree;
 		JLabel selectedLabel;
 		// create the root node
-<<<<<<< HEAD
-=======
 
 		mainPanel.setLayout(new FlowLayout());
 		mainPanel.setBounds(0, 0, 415, 500);
@@ -96,7 +92,6 @@ public class GUI {
 
 		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
 		folderAddBtn.setBounds(0, 400, 207, 100);
->>>>>>> aeb6a2a19e3f238c759992d4ef044feed68da0fe
 
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
 		// create the child nodes
@@ -134,7 +129,6 @@ public class GUI {
 			}
 		});
 
-<<<<<<< HEAD
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setTitle("Memo Pad");
 		mainFrame.setBounds(650, 300, 415, 500);
@@ -145,9 +139,6 @@ public class GUI {
 		
 		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
 		folderAddBtn.setBounds(0, 500, 207, 100);		
-		
-=======
->>>>>>> aeb6a2a19e3f238c759992d4ef044feed68da0fe
 	}
 
 	private void test() {
@@ -183,23 +174,13 @@ public class GUI {
 		folderAddFrame.setResizable(false);
 		folderAddFrame.setTitle("Add Category");
 		folderAddFrame.setLayout(null);
-		JLabel folderAddLabel = new JLabel("카테고리를 입력해주세요\n");
+		JLabel folderAddLabel = new JLabel("Set category title.\n");
 		folderAddLabel.setBounds(20, -20, 300, 100);
-		folderAddLabel.setFont(new Font("굴림", Font.PLAIN, 15));
+		folderAddLabel.setFont(new Font("gulim", Font.PLAIN, 15));
 		folderAddFrame.add(folderAddLabel);
 		folderTitleField = uiData.getFolderTitleField();
 		folderTitleField.setBounds(20, 50, 200, 30);
-		folderTitleField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				int a = 10; // red 성분
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					// TODO textField에서 타이틀을 받아서 폴더 추가
-					folderAddFrame.dispose();
-				}
-			}
-		});
-
+		folderTitleField.addKeyListener(new AddFolderController(objectManager, this));
 		folderAddFrame.add(folderTitleField);
 	}
 
@@ -222,9 +203,9 @@ public class GUI {
 			}
 		});
 		memoPanel.add(memoList);
-		JScrollPane jsp2 = new JScrollPane(); // 창 스크롤
-		jsp2.setBounds(0, 50, 400, 650); // 스크롤 사이즈 설정
-		memoPanel.add(jsp2); // 콘텐츠 판넬에 스크롤 추가
+		JScrollPane jsp2 = new JScrollPane(); // 李� �뒪�겕濡�
+		jsp2.setBounds(0, 50, 400, 650); // �뒪�겕濡� �궗�씠利� �꽕�젙
+		memoPanel.add(jsp2); // 肄섑뀗痢� �뙋�꽟�뿉 �뒪�겕濡� 異붽�
 
 		memoPanel.add(memoAddBtn = uiData.getMemoAddBtn());
 		memoAddBtn.setBounds(0, 0, 200, 50);

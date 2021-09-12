@@ -1,5 +1,6 @@
 package com.memopad.controller;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -7,7 +8,7 @@ import com.memopad.model.FolderManager;
 import com.memopad.model.ObjectManager;
 import com.memopad.view.GUI;
 
-public class AddFolderController implements KeyListener {
+public class AddFolderController extends KeyAdapter {
 	ObjectManager objectManager;
 	GUI gui;	
 	FolderManager folderManager;
@@ -30,9 +31,10 @@ public class AddFolderController implements KeyListener {
 		// TODO Auto-generated method stub
 		 if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 		      // Enter was pressed. Your code goes here.
-			 String title = objectManager.uiData.getFolderTitleField().getText();
+			 String title = gui.folderTitleField.getText();
 			 folderManager.addFolder(title, "C:\\Users\\jang6\\Desktop\\MemoData\\" + title);
 			 gui.setFolderTitleField("");
+			 gui.folderAddFrame.dispose();
 		   }
 	}
 
