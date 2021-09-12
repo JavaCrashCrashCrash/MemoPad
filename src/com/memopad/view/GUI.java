@@ -1,8 +1,10 @@
 package com.memopad.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class GUI {
 	JPanel mainPanel = new JPanel();
 	JPanel memoPanel = new JPanel();
 	JPanel memoAddPanel = new JPanel();
+	TreeGUI treeGUI;
 	JList folderList, memoList;
 
 	public JList getFolderList() {
@@ -54,26 +57,46 @@ public class GUI {
 	ObjectManager objectManager;
 	FolderManager folderManager;
 	ArrayList<Folder> folders;
-	// ÇÊµå (field)
+	// ï¿½Êµï¿½ (field)
 
 	public GUI(ObjectManager objectManager) {
 		this.objectManager = objectManager;
 		this.uiData = objectManager.uiData;
 		this.folderManager = objectManager.folderManager;
 		this.folders = folderManager.getFolderList();
-		treeMainUI();
+		test();
+//		treeMainUI();
 //		mainUI();
 //		memoUI("first folder");
-		// UiData (model) ¿¡¼­ »ı¼ºÀÚ·Î Á¤º¸ ¹Ş¾Æ¿À±â
+		// UiData (model) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¾Æ¿ï¿½ï¿½ï¿½
 	}
 
 	public void treeMainUI() {
+<<<<<<< HEAD
 //		mainPanel.setLayout(new FlowLayout()); // ¹öÆ° ÆÇ³Ú ·¹ÀÌ¾Æ¿ô ¼³Á¤
 		mainPanel.setSize(415, 500); // ¹öÆ° ÆÇ³Ú »çÀÌÁî ¼³Á¤
+=======
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setTitle("Memo Pad");
+		mainFrame.setBounds(650, 300, 415, 500);
+		mainFrame.setVisible(true);
+		mainFrame.setResizable(false);
+		mainFrame.setLayout(null);
+>>>>>>> aeb6a2a19e3f238c759992d4ef044feed68da0fe
 
 		JTree tree;
 		JLabel selectedLabel;
 		// create the root node
+<<<<<<< HEAD
+=======
+
+		mainPanel.setLayout(new FlowLayout());
+		mainPanel.setBounds(0, 0, 415, 500);
+		mainFrame.add(mainPanel);
+
+		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
+		folderAddBtn.setBounds(0, 400, 207, 100);
+>>>>>>> aeb6a2a19e3f238c759992d4ef044feed68da0fe
 
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
 		// create the child nodes
@@ -111,6 +134,7 @@ public class GUI {
 			}
 		});
 
+<<<<<<< HEAD
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setTitle("Memo Pad");
 		mainFrame.setBounds(650, 300, 415, 500);
@@ -122,36 +146,35 @@ public class GUI {
 		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
 		folderAddBtn.setBounds(0, 500, 207, 100);		
 		
+=======
+>>>>>>> aeb6a2a19e3f238c759992d4ef044feed68da0fe
 	}
 
-	public void mainUI() {
-		mainFrame.setBounds(600, 300, 415, 700); // (Ã¢ À§Ä¡ x, Ã¢ À§Ä¡ y, °¡·Î, ¼¼·Î)
-		mainFrame.setVisible(true); // Ã¢ º¸ÀÌ°Ô
-		mainFrame.setResizable(false); // Ã¢ Å©±â Á¶Àı ÇÒ ¼ö ¾ø°Ô
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ¿ìÃø »ó´Ü X·Î Á¾·á
-		mainFrame.setTitle("Memo Pad"); // Å¸ÀÌÆ²
-		mainFrame.add(mainPanel); // ¹öÆ° ÆÇ³Ú Ãß°¡
-		mainPanel.setLayout(null); // ¹öÆ° ÆÇ³Ú ·¹ÀÌ¾Æ¿ô ¼³Á¤
-		mainPanel.setBounds(0, 0, 400, 700); // ¹öÆ° ÆÇ³Ú »çÀÌÁî ¼³Á¤
+	private void test() {
+		// Create the components.
+		treeGUI = new TreeGUI(folderManager);
+		mainPanel = new JPanel(new BorderLayout());
 
-		folderList = uiData.getFolderList();
-		folderList.setFixedCellHeight(30);
-		folderList.setCellRenderer(new DefaultListCellRenderer() {
-			public int getHorizontalAlignment() {
-				return CENTER;
-			}
-		});
-		folderList.setBounds(0, 50, 400, 650);
-		folderList.addMouseListener(null);
-		mainPanel.add(folderList);
-		JScrollPane jsp = new JScrollPane(); // Ã¢ ½ºÅ©·Ñ
-		jsp.setBounds(0, 50, 400, 650); // ½ºÅ©·Ñ »çÀÌÁî ¼³Á¤
-		mainPanel.add(jsp); // ÄÜÅÙÃ÷ ÆÇ³Ú¿¡ ½ºÅ©·Ñ Ãß°¡
+		// Lay everything out.
+		treeGUI.setPreferredSize(new Dimension(500, 300));
+		mainPanel.add(treeGUI, BorderLayout.CENTER);
 
-		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
-		folderAddBtn.setBounds(0, 0, 200, 50);
-		mainPanel.add(folderDeleteBtn = uiData.getFolderDeleteBtn());
-		folderDeleteBtn.setBounds(200, 0, 200, 50);
+		JPanel panel = new JPanel(new GridLayout(1, 2));
+		panel.add(folderAddBtn = uiData.getFolderAddBtn());
+		panel.add(folderDeleteBtn = uiData.getFolderDeleteBtn());
+		panel.add(memoAddBtn = uiData.getMemoAddBtn());
+		panel.add(memoDeleteBtn = uiData.getMemoDeleteBtn());
+		mainPanel.add(panel, BorderLayout.SOUTH);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// Create and set up the content pane.
+
+		mainPanel.setOpaque(true); // content panes must be opaque
+		mainFrame.setContentPane(mainPanel);
+
+		// Display the window.
+		mainFrame.pack();
+		mainFrame.setVisible(true);
 	}
 
 	public void folderAddUI() {
@@ -160,18 +183,18 @@ public class GUI {
 		folderAddFrame.setResizable(false);
 		folderAddFrame.setTitle("Add Category");
 		folderAddFrame.setLayout(null);
-		JLabel folderAddLabel = new JLabel("Ä«Å×°í¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\n");
+		JLabel folderAddLabel = new JLabel("ì¹´í…Œê³ ë¦¬ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”\n");
 		folderAddLabel.setBounds(20, -20, 300, 100);
-		folderAddLabel.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		folderAddLabel.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		folderAddFrame.add(folderAddLabel);
 		folderTitleField = uiData.getFolderTitleField();
 		folderTitleField.setBounds(20, 50, 200, 30);
 		folderTitleField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				int a = 10; // red ¼ººĞ
+				int a = 10; // red ì„±ë¶„
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					// TODO textField¿¡¼­ Å¸ÀÌÆ²À» ¹Ş¾Æ¼­ Æú´õ Ãß°¡
+					// TODO textFieldì—ì„œ íƒ€ì´í‹€ì„ ë°›ì•„ì„œ í´ë” ì¶”ê°€
 					folderAddFrame.dispose();
 				}
 			}
@@ -199,9 +222,9 @@ public class GUI {
 			}
 		});
 		memoPanel.add(memoList);
-		JScrollPane jsp2 = new JScrollPane(); // Ã¢ ½ºÅ©·Ñ
-		jsp2.setBounds(0, 50, 400, 650); // ½ºÅ©·Ñ »çÀÌÁî ¼³Á¤
-		memoPanel.add(jsp2); // ÄÜÅÙÃ÷ ÆÇ³Ú¿¡ ½ºÅ©·Ñ Ãß°¡
+		JScrollPane jsp2 = new JScrollPane(); // ì°½ ìŠ¤í¬ë¡¤
+		jsp2.setBounds(0, 50, 400, 650); // ìŠ¤í¬ë¡¤ ì‚¬ì´ì¦ˆ ì„¤ì •
+		memoPanel.add(jsp2); // ì½˜í…ì¸  íŒë„¬ì— ìŠ¤í¬ë¡¤ ì¶”ê°€
 
 		memoPanel.add(memoAddBtn = uiData.getMemoAddBtn());
 		memoAddBtn.setBounds(0, 0, 200, 50);
