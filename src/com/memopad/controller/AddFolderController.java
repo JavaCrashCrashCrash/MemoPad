@@ -32,7 +32,7 @@ public class AddFolderController extends KeyAdapter {
 		 if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 		      // Enter was pressed. Your code goes here.
 			 String title = gui.folderTitleField.getText();
-			 folderManager.addFolder(title, "C:\\Users\\jang6\\Desktop\\MemoData\\" + title);
+			 folderManager.addFolder(title);
 			 gui.setFolderTitleField("");
 			 gui.folderAddFrame.dispose();
 		   }

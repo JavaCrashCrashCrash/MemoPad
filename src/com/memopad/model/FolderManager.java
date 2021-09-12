@@ -27,6 +27,12 @@ public class FolderManager {
 	public ArrayList<Folder> getFolderList() {
 		return folderArrayList;
 	}
+	
+	public void addFolder(String title) {
+		Folder folder = new Folder(title, "");
+		addFolder(folder);
+		
+	}
 
 	public void addFolder(Folder folder) {
 		folderArrayList.add(folder);
