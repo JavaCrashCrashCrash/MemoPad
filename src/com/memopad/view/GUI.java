@@ -1,6 +1,7 @@
 package com.memopad.view;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -67,9 +68,23 @@ public class GUI {
 	}
 
 	public void treeMainUI() {
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setTitle("Memo Pad");
+		mainFrame.setBounds(650, 300, 415, 500);
+		mainFrame.setVisible(true);
+		mainFrame.setResizable(false);
+		mainFrame.setLayout(null);
+		
 		JTree tree;
 		JLabel selectedLabel;
 		// create the root node
+		
+		mainPanel.setLayout(new FlowLayout()); // 버튼 판넬 레이아웃 설정
+		mainPanel.setBounds(0, 0, 415, 500); // 버튼 판넬 사이즈 설정
+		mainFrame.add(mainPanel);
+		
+		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
+		folderAddBtn.setBounds(0, 400, 207, 100);		
 
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
 		// create the child nodes
@@ -90,11 +105,11 @@ public class GUI {
 		tree.setCellRenderer(renderer);
 		tree.setShowsRootHandles(true);
 		tree.setRootVisible(false);
-		mainFrame.add(new JScrollPane(tree));
+		mainPanel.add(new JScrollPane(tree));
 		tree.setBounds(0, 0, 415, 400);
 
 		selectedLabel = new JLabel();
-		mainFrame.add(selectedLabel, BorderLayout.SOUTH);
+		mainPanel.add(selectedLabel);
 		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
 			@Override
 			public void valueChanged(TreeSelectionEvent e) {
@@ -103,19 +118,7 @@ public class GUI {
 			}
 		});
 
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setTitle("Memo Pad");
-		mainFrame.setBounds(650, 300, 415, 500);
-		mainFrame.setVisible(true);
-		mainFrame.setResizable(false);
-		mainFrame.setLayout(null);
-		
-		mainPanel.setLayout(null); // 버튼 판넬 레이아웃 설정
-		mainPanel.setBounds(0, 400, 415, 500); // 버튼 판넬 사이즈 설정
-		mainFrame.add(mainPanel);
-		
-		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
-		folderAddBtn.setBounds(0, 400, 207, 100);
+
 	}
 
 	public void mainUI() {
