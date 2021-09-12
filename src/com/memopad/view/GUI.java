@@ -68,23 +68,12 @@ public class GUI {
 	}
 
 	public void treeMainUI() {
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setTitle("Memo Pad");
-		mainFrame.setBounds(650, 300, 415, 500);
-		mainFrame.setVisible(true);
-		mainFrame.setResizable(false);
-		mainFrame.setLayout(null);
-		
+//		mainPanel.setLayout(new FlowLayout()); // 버튼 판넬 레이아웃 설정
+		mainPanel.setSize(415, 500); // 버튼 판넬 사이즈 설정
+
 		JTree tree;
 		JLabel selectedLabel;
 		// create the root node
-		
-		mainPanel.setLayout(new FlowLayout()); // 버튼 판넬 레이아웃 설정
-		mainPanel.setBounds(0, 0, 415, 500); // 버튼 판넬 사이즈 설정
-		mainFrame.add(mainPanel);
-		
-		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
-		folderAddBtn.setBounds(0, 400, 207, 100);		
 
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
 		// create the child nodes
@@ -105,8 +94,12 @@ public class GUI {
 		tree.setCellRenderer(renderer);
 		tree.setShowsRootHandles(true);
 		tree.setRootVisible(false);
-		mainPanel.add(new JScrollPane(tree));
+
 		tree.setBounds(0, 0, 415, 400);
+		JScrollPane treeScroll;
+		mainPanel.add(treeScroll = new JScrollPane(tree));
+		treeScroll.setBounds(0, 0, 415, 400);
+	
 
 		selectedLabel = new JLabel();
 		mainPanel.add(selectedLabel);
@@ -118,7 +111,17 @@ public class GUI {
 			}
 		});
 
-
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setTitle("Memo Pad");
+		mainFrame.setBounds(650, 300, 415, 500);
+		mainFrame.setVisible(true);
+		mainFrame.setResizable(false);
+		mainFrame.setLayout(null);
+		mainFrame.add(mainPanel);
+		
+		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
+		folderAddBtn.setBounds(0, 500, 207, 100);		
+		
 	}
 
 	public void mainUI() {
