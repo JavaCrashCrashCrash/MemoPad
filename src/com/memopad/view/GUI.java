@@ -39,7 +39,7 @@ public class GUI {
 	JPanel mainPanel = new JPanel();
 	JPanel memoPanel = new JPanel();
 	JPanel memoAddPanel = new JPanel();
-	TreeGUI treeGUI;
+	public TreeGUI treeGUI;
 	JList folderList, memoList;
 
 	public JList getFolderList() {
@@ -58,7 +58,7 @@ public class GUI {
 	ObjectManager objectManager;
 	FolderManager folderManager;
 	ArrayList<Folder> folders;
-	// 占십듸옙 (field)
+	// �뜝�떗�벝�삕 (field)
 
 	public GUI(ObjectManager objectManager) {
 		this.objectManager = objectManager;
@@ -66,15 +66,11 @@ public class GUI {
 		this.folderManager = objectManager.folderManager;
 		this.folders = folderManager.getFolderList();
 		test();
-//		treeMainUI();
-//		mainUI();
-//		memoUI("first folder");
-		// UiData (model) 占쏙옙占쏙옙 占쏙옙占쏙옙占쌘뤄옙 占쏙옙占쏙옙 占쌨아울옙占쏙옙
 	}
 
 	public void treeMainUI() {
-//		mainPanel.setLayout(new FlowLayout()); // 버튼 판넬 레이아웃 설정
-		mainPanel.setSize(415, 500); // 버튼 판넬 사이즈 설정
+//		mainPanel.setLayout(new FlowLayout()); // 踰꾪듉 �뙋�꽟 �젅�씠�븘�썐 �꽕�젙
+		mainPanel.setSize(415, 500); // 踰꾪듉 �뙋�꽟 �궗�씠利� �꽕�젙
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setTitle("Memo Pad");
 		mainFrame.setBounds(650, 300, 415, 500);
@@ -203,9 +199,9 @@ public class GUI {
 			}
 		});
 		memoPanel.add(memoList);
-		JScrollPane jsp2 = new JScrollPane(); // 李� �뒪�겕濡�
-		jsp2.setBounds(0, 50, 400, 650); // �뒪�겕濡� �궗�씠利� �꽕�젙
-		memoPanel.add(jsp2); // 肄섑뀗痢� �뙋�꽟�뿉 �뒪�겕濡� 異붽�
+		JScrollPane jsp2 = new JScrollPane(); // 筌∽옙 占쎈뮞占쎄쾿嚥∽옙
+		jsp2.setBounds(0, 50, 400, 650); // 占쎈뮞占쎄쾿嚥∽옙 占쎄텢占쎌뵠筌앾옙 占쎄퐬占쎌젟
+		memoPanel.add(jsp2); // �굜�꼹�쀯㎘占� 占쎈솇占쎄퐶占쎈퓠 占쎈뮞占쎄쾿嚥∽옙 �빊遺쏙옙
 
 		memoPanel.add(memoAddBtn = uiData.getMemoAddBtn());
 		memoAddBtn.setBounds(0, 0, 200, 50);

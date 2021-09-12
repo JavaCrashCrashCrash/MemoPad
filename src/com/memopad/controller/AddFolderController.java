@@ -33,8 +33,10 @@ public class AddFolderController extends KeyAdapter {
 		      // Enter was pressed. Your code goes here.
 			 String title = gui.folderTitleField.getText();
 			 folderManager.addFolder(title);
+			 objectManager.folderManager = folderManager;
 			 gui.setFolderTitleField("");
 			 gui.folderAddFrame.dispose();
+			 gui.treeGUI.reload();
 		   }
 	}
 

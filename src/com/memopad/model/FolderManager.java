@@ -37,7 +37,6 @@ public class FolderManager {
 	public void addFolder(Folder folder) {
 		folderArrayList.add(folder);
 		fileManager.writeFolder(folder.getTitle());
-		
 	}
 	
 	public void addFolder(String title, String path) {
