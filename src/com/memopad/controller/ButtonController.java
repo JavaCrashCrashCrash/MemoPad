@@ -3,6 +3,7 @@ package com.memopad.controller;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JTextField;
+import javax.swing.tree.*;
 
 import com.memopad.model.FileManager;
 import com.memopad.model.FolderManager;
@@ -36,6 +37,8 @@ public class ButtonController {
 		memoDeleteBtn.addActionListener(new DeleteMemoController());
 		memoClearBtn.addActionListener(new ClearMemoController());
 		memoSaveBtn.addActionListener(new AddMemoController(objectManager, gui));
+		gui.getTree().getSelectionModel().addTreeSelectionListener(new AddMemoController(objectManager, gui)); 
+		
 		
 		folderList = objectManager.uiData.getFolderList();
 		folderList.addMouseListener(new FolderLoadingController(objectManager, gui));

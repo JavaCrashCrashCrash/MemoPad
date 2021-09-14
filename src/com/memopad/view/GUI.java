@@ -39,6 +39,7 @@ public class GUI {
 	JPanel mainPanel = new JPanel();
 	JPanel memoPanel = new JPanel();
 	JPanel memoAddPanel = new JPanel();
+	JTree tree;
 	public TreeGUI treeGUI;
 	JList folderList, memoList;
 
@@ -50,7 +51,7 @@ public class GUI {
 		this.folderList = folderList;
 	}
 
-	JTextArea memoArea;
+	public JTextArea memoArea;
 	public JTextField folderTitleField;
 	JButton folderAddBtn, folderDeleteBtn, memoAddBtn, memoDeleteBtn, memoClearBtn, memoSaveBtn;
 
@@ -78,7 +79,6 @@ public class GUI {
 		mainFrame.setResizable(false);
 		mainFrame.setLayout(null);
 
-		JTree tree;
 		JLabel selectedLabel;
 		// create the root node
 
@@ -162,6 +162,9 @@ public class GUI {
 		// Display the window.
 		mainFrame.pack();
 		mainFrame.setVisible(true);
+		mainFrame.setTitle("Memo Pad");
+		mainFrame.setLocationRelativeTo(null);
+		mainFrame.setResizable(false);
 	}
 
 	public void folderAddUI() {
@@ -254,5 +257,13 @@ public class GUI {
 
 	public void setFolderTitleField(String text) {
 		folderTitleField.setText(text);
+	}
+	
+	public JTree getTree() {
+		return treeGUI.tree;
+	}
+	
+	public void setMemoArea(String text) {
+		memoArea.setText(text);
 	}
 }

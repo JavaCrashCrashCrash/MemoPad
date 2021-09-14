@@ -38,8 +38,9 @@ public class FileManager {
 		}
 	}
 
-	public void writeMemo(String folderPath) {
-		String memoPath = "";
+	public void writeMemo(String folderTitle, Memo memo) {
+		String memoPath = "C:\\Users\\jang6\\Desktop\\MemoData\\" + folderTitle;
+		
 	}
 
 }
