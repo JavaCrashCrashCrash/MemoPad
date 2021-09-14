@@ -23,7 +23,7 @@ public class FolderManager {
 	}
 
 	public Folder getFolder(String title) {
-		Folder folder = null;
+		Folder folder;
 
 		try {
 			for (int i = 0; i < folderArrayList.size(); i++) {
@@ -33,10 +33,10 @@ public class FolderManager {
 				}
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
-			return null;
-		}
-
-		return folder;
+			return folder = new Folder("null", "null");
+		} 
+		
+		return folder = new Folder("null", "null");
 	}
 
 	public ArrayList<Folder> getFolderList() {

@@ -33,25 +33,25 @@ public class TreeGUI extends JPanel {
 		tree.setEditable(true);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
-		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+//		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
 			
-			@Override
-			public void valueChanged(TreeSelectionEvent e) {
-				// TODO Auto-generated method stub
-				DefaultMutableTreeNode selectedNode = 
-					       (DefaultMutableTreeNode)tree.getLastSelectedPathComponent(); 
-				System.out.println("selectedNode : " + selectedNode.getUserObject().toString());
-			}
-		});
+//			@Override
+//			public void valueChanged(TreeSelectionEvent e) {
+//				// TODO Auto-generated method stub
+//				DefaultMutableTreeNode selectedNode = 
+//					       (DefaultMutableTreeNode)tree.getLastSelectedPathComponent(); 
+//				System.out.println("selectedNode : " + selectedNode.getUserObject().toString());
+//			}
+//		});
 		
-		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
-			
-			@Override
-			public void valueChanged(TreeSelectionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("selected");
-			}
-		});
+//		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+//			
+//			@Override
+//			public void valueChanged(TreeSelectionEvent e) {
+//				// TODO Auto-generated method stub
+//				System.out.println("selected");
+//			}
+//		});
 		JScrollPane scrollPane = new JScrollPane(tree);
 		add(scrollPane);
 	}
