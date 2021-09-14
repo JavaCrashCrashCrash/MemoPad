@@ -29,6 +29,7 @@ public class FolderManager {
 			for (int i = 0; i < folderArrayList.size(); i++) {
 				if (folderArrayList.get(i).getTitle() == title) {
 					folder = folderArrayList.get(i);
+					return folder;
 				}
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {

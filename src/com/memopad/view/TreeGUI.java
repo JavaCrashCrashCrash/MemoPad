@@ -38,6 +38,17 @@ public class TreeGUI extends JPanel {
 			@Override
 			public void valueChanged(TreeSelectionEvent e) {
 				// TODO Auto-generated method stub
+				DefaultMutableTreeNode selectedNode = 
+					       (DefaultMutableTreeNode)tree.getLastSelectedPathComponent(); 
+				System.out.println("selectedNode : " + selectedNode.getUserObject().toString());
+			}
+		});
+		
+		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+			
+			@Override
+			public void valueChanged(TreeSelectionEvent e) {
+				// TODO Auto-generated method stub
 				System.out.println("selected");
 			}
 		});
@@ -73,4 +84,6 @@ public class TreeGUI extends JPanel {
 	public void add() {
 		
 	}
+	
+	
 }
