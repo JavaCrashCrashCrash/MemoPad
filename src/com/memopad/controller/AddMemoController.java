@@ -23,7 +23,7 @@ public class AddMemoController implements ActionListener, TreeSelectionListener 
 	}
 	
 		
-	public void valueChanged(AddMemoController e) {
+	public void valueChanged(TreeSelectionEvent e) {
 		// TODO Auto-generated method stub
 		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.getTree().getLastSelectedPathComponent();
 		this.folderTitle = selectedNode.getUserObject().toString();
@@ -50,16 +50,6 @@ public class AddMemoController implements ActionListener, TreeSelectionListener 
 		gui.folderAddFrame.dispose();
 		gui.treeGUI.reload();
 	}
-
-	@Override
-	public void valueChanged(TreeSelectionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
 
 
 }
