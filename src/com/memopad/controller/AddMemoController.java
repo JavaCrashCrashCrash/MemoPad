@@ -12,46 +12,42 @@ import com.memopad.model.ObjectManager;
 import com.memopad.view.GUI;
 
 public class AddMemoController implements ActionListener, TreeSelectionListener {
-		ObjectManager objectManager;
-		GUI gui;
-		String folderTitle;
-		
-		
+	ObjectManager objectManager;
+	GUI gui;
+
 	public AddMemoController(ObjectManager objectManager, GUI gui) {
 		this.objectManager = objectManager;
 		this.gui = gui;
 	}
-	
-		
+
 	public void valueChanged(TreeSelectionEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("working");
 		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.getTree().getLastSelectedPathComponent();
-		if (selectedNode != null) {			
-			this.folderTitle = selectedNode.getUserObject().toString();
+		if (selectedNode != null) {
+			objectManager.folderManager.setSelectedFolder(selectedNode.getUserObject().toString());
+//			System.out.println(folderTitle);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 		StringBuilder sb = new StringBuilder();
 		String wholeInfo = gui.memoArea.getText();
 		String[] splitByLine = wholeInfo.split("\n");
 		String title = splitByLine[0];
-		String content;	
-		for (int i = 1; i < splitByLine.length; i++) {
+		String content;
+		for (int i = 0; i < splitByLine.length; i++) {
 			sb.append(splitByLine[i]);
 		}
 		content = sb.toString();
 		Memo memo = new Memo(title, content);
-		
-		objectManager.folderManager.getFolder(this.folderTitle).addMemo(memo);
+		objectManager.folderManager.getFolder(objectManager.folderManager.getSelectedFolder()).addMemo(memo);
+		System.out.println(objectManager.folderManager.getSelectedFolder());
 		gui.setMemoArea("");
-		gui.folderAddFrame.dispose();
+		gui.memoAddFrame.dispose();
 		gui.treeGUI.reload();
 	}
-
 
 }

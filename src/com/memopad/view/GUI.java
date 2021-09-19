@@ -34,7 +34,7 @@ import com.memopad.model.UiData;
 public class GUI {
 	public JFrame mainFrame = new JFrame();
 	public JFrame folderAddFrame = new JFrame();
-	JFrame memoAddFrame = new JFrame();
+	public JFrame memoAddFrame = new JFrame();
 	JFrame memoFrame = new JFrame();
 	JPanel mainPanel = new JPanel();
 	JPanel memoPanel = new JPanel();
@@ -67,74 +67,6 @@ public class GUI {
 		this.folderManager = objectManager.folderManager;
 		this.folders = folderManager.getFolderList();
 		test();
-	}
-
-	public void treeMainUI() {
-//		mainPanel.setLayout(new FlowLayout()); // 踰꾪듉 �뙋�꽟 �젅�씠�븘�썐 �꽕�젙
-		mainPanel.setSize(415, 500); // 踰꾪듉 �뙋�꽟 �궗�씠利� �꽕�젙
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setTitle("Memo Pad");
-		mainFrame.setBounds(650, 300, 415, 500);
-		mainFrame.setVisible(true);
-		mainFrame.setResizable(false);
-		mainFrame.setLayout(null);
-
-		JLabel selectedLabel;
-		// create the root node
-
-		mainPanel.setLayout(new FlowLayout());
-		mainPanel.setBounds(0, 0, 415, 500);
-		mainFrame.add(mainPanel);
-
-		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
-		folderAddBtn.setBounds(0, 400, 207, 100);
-
-		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
-		// create the child nodes
-		ArrayList<Folder> folders = folderManager.getFolderList();
-		DefaultMutableTreeNode folderNodes[] = new DefaultMutableTreeNode[folders.size()];
-		for (int i = 0; i < folders.size(); i++) {
-			folderNodes[i] = new DefaultMutableTreeNode(folders.get(i).getTitle());
-			folderNodes[i].add(new DefaultMutableTreeNode("No memo exists."));
-			root.add(folderNodes[i]);
-		}
-
-		// create the tree by passing in the root node
-		tree = new JTree(root);
-//    ImageIcon imageIcon = new ImageIcon(TreeExample.class.getResource("/leaf.jpg"));
-		DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
-//    renderer.setLeafIcon(imageIcon);
-
-		tree.setCellRenderer(renderer);
-		tree.setShowsRootHandles(true);
-		tree.setRootVisible(false);
-
-		tree.setBounds(0, 0, 415, 400);
-		JScrollPane treeScroll;
-		mainPanel.add(treeScroll = new JScrollPane(tree));
-		treeScroll.setBounds(0, 0, 415, 400);
-	
-
-		selectedLabel = new JLabel();
-		mainPanel.add(selectedLabel);
-		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
-			@Override
-			public void valueChanged(TreeSelectionEvent e) {
-				DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-				selectedLabel.setText(selectedNode.getUserObject().toString());
-			}
-		});
-
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.setTitle("Memo Pad");
-		mainFrame.setBounds(650, 300, 415, 500);
-		mainFrame.setVisible(true);
-		mainFrame.setResizable(false);
-		mainFrame.setLayout(null);
-		mainFrame.add(mainPanel);
-		
-		mainPanel.add(folderAddBtn = uiData.getFolderAddBtn());
-		folderAddBtn.setBounds(0, 500, 207, 100);		
 	}
 
 	private void test() {

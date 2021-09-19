@@ -5,6 +5,15 @@ import java.util.ArrayList;
 public class FolderManager {
 	ArrayList<Folder> folderArrayList;
 	FileManager fileManager;
+	String selectedFolderTitle;
+
+	public String getSelectedFolder() {
+		return selectedFolderTitle;
+	}
+
+	public void setSelectedFolder(String selectedFolderTitle) {
+		this.selectedFolderTitle = selectedFolderTitle;
+	}
 
 	public FolderManager() {
 		folderArrayList = new ArrayList<>();
@@ -17,6 +26,8 @@ public class FolderManager {
 		addFolder(a);
 		addFolder(b);
 	}
+	
+	
 
 	public Folder getFolder(int index) {
 		return folderArrayList.get(index);
