@@ -15,12 +15,12 @@ public class UiData {
 	private JList folderList, memoList;
 	
 	public UiData() {
-		folderAddBtn = new JButton("카테고리 추가");
-		folderDeleteBtn = new JButton("카테고리 삭제");
-		memoAddBtn = new JButton("메모 추가");
-		memoDeleteBtn = new JButton("메모 삭제");
-		memoSaveBtn = new JButton("메모 저장");
-		memoClearBtn = new JButton("비우기");
+		folderAddBtn = new JButton("Add Category");
+		folderDeleteBtn = new JButton("Delete Category");
+		memoAddBtn = new JButton("Add Memo");
+		memoDeleteBtn = new JButton("Delete Memo");
+		memoSaveBtn = new JButton("Save Memo");
+		memoClearBtn = new JButton("Clear");
 		folderTitleField = new JTextField();
 		memoArea = new JTextArea();
 		folderList = new JList();
