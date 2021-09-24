@@ -78,7 +78,6 @@ public class TreeGUI extends JPanel {
 			DefaultMutableTreeNode empty = new DefaultMutableTreeNode("No memo exists.");
 			treeModel.insertNodeInto(empty, folderNodes[i], folderNodes[i].getChildCount());
 		}
-
 	}
 
 	public void add() {

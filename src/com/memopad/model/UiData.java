@@ -19,7 +19,7 @@ public class UiData {
 		folderDeleteBtn = new JButton("Delete Category");
 		memoAddBtn = new JButton("Add Memo");
 		memoDeleteBtn = new JButton("Delete Memo");
-		memoSaveBtn = new JButton("Save Memo");
+		memoSaveBtn = new JButton("Save");
 		memoClearBtn = new JButton("Clear");
 		folderTitleField = new JTextField();
 		memoArea = new JTextArea();

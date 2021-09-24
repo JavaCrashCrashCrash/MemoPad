@@ -46,8 +46,9 @@ public class FileManager {
 			StringBuilder sb = new StringBuilder();
 			sb.append(memo.getTitle());
 			sb.append(memo.getContent());
-			String memoPath = "C:\\Users\\jang6\\Desktop\\MemoData\\" + folderTitle;
+			String memoPath = "C:\\Users\\jang6\\Desktop\\MemoData\\" + folderTitle + "\\" + memo.getTitle() + ".txt";
 			FileWriter fw;
+			System.out.println(memoPath);
 			fw = new FileWriter(memoPath);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(sb.toString());
