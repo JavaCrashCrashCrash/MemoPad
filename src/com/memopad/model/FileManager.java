@@ -1,6 +1,9 @@
 package com.memopad.model;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileManager {
@@ -39,7 +42,23 @@ public class FileManager {
 	}
 
 	public void writeMemo(String folderTitle, Memo memo) {
-		String memoPath = "C:\\Users\\jang6\\Desktop\\MemoData\\" + folderTitle;
+		try {
+			StringBuilder sb = new StringBuilder();
+			sb.append(memo.getTitle());
+			sb.append(memo.getContent());
+			String memoPath = "C:\\Users\\jang6\\Desktop\\MemoData\\" + folderTitle;
+			FileWriter fw;
+			fw = new FileWriter(memoPath);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(sb.toString());
+			bw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void read() {
 		
 	}
 

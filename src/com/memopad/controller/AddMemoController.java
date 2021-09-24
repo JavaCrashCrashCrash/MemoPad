@@ -43,6 +43,7 @@ public class AddMemoController implements ActionListener, TreeSelectionListener 
 		}
 		content = sb.toString();
 		Memo memo = new Memo(title, content);
+		objectManager.fileManager.writeMemo(objectManager.folderManager.getSelectedFolder(), memo);
 		objectManager.folderManager.getFolder(objectManager.folderManager.getSelectedFolder()).addMemo(memo);
 		System.out.println(objectManager.folderManager.getSelectedFolder());
 		gui.setMemoArea("");

@@ -36,7 +36,7 @@ public class GUI {
 	public JFrame folderAddFrame = new JFrame();
 	public JFrame memoAddFrame = new JFrame();
 	JFrame memoFrame = new JFrame();
-	JPanel mainPanel = new JPanel();
+	public JPanel mainPanel = new JPanel();
 	JPanel memoPanel = new JPanel();
 	JPanel memoAddPanel = new JPanel();
 	JTree tree;

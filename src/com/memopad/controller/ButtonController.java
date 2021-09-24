@@ -26,6 +26,7 @@ public class ButtonController {
 		folderManager = objectManager.folderManager;
 		fileManager = objectManager.fileManager;
 		AddMemoController addMemoController = new AddMemoController(objectManager, gui);
+		DeleteFolderController deleteFolderController = new DeleteFolderController(objectManager, gui);
 		
 		folderAddBtn = objectManager.uiData.getFolderAddBtn();
 		folderDeleteBtn = objectManager.uiData.getFolderDeleteBtn();
@@ -35,7 +36,8 @@ public class ButtonController {
 		memoSaveBtn = objectManager.uiData.getMemoSaveBtn();
 		
 		folderAddBtn.addActionListener(new AddFolderUIController(objectManager, gui));
-		folderDeleteBtn.addActionListener(new DeleteFolderController());
+		folderDeleteBtn.addActionListener(new DeleteFolderController(objectManager, gui));
+		gui.getTree().getSelectionModel().addTreeSelectionListener(deleteFolderController); 
 		memoAddBtn.addActionListener(new AddMemoUIController(gui));
 		memoDeleteBtn.addActionListener(new DeleteMemoController());
 		memoClearBtn.addActionListener(new ClearMemoController());
