@@ -22,7 +22,9 @@ public class DeleteMemoController implements ActionListener, TreeSelectionListen
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + objectManager.folderManager.getSelectedFolder() ;
+		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + objectManager.folderManager.getSelectedFolder();
+		
+		
 	}
 
 	@Override

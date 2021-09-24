@@ -66,7 +66,7 @@ public class TreeGUI extends JPanel {
 				treeModel.insertNodeInto(empty, folderNodes[i], folderNodes[i].getChildCount());
 			}
 			for (int j = 0; j < memos.size(); j++) {
-				memoNodes[j] = new DefaultMutableTreeNode(memos.get(i).getTitle());
+				memoNodes[j] = new DefaultMutableTreeNode(memos.get(j).getTitle());
 				treeModel.insertNodeInto(memoNodes[j], folderNodes[i], folderNodes[i].getChildCount());
 			}
 

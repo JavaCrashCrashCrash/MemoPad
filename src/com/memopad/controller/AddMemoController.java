@@ -38,8 +38,8 @@ public class AddMemoController implements ActionListener, TreeSelectionListener 
 		String[] splitByLine = wholeInfo.split("\n");
 		String title = splitByLine[0];
 		String content;
-		for (int i = 0; i < splitByLine.length; i++) {
-			sb.append(splitByLine[i]);
+		for (int i = 1; i < splitByLine.length; i++) {
+			sb.append(splitByLine[i] + "\n");
 		}
 		content = sb.toString();
 		Memo memo = new Memo(title, content);
