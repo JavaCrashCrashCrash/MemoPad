@@ -13,13 +13,13 @@ public class FileManager {
 	}
 
 	public void writeFolder(String title) {
-		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + title; // Æú´õ °æ·Î
+		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + title; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		File folder = new File(path);
 
-		// ÇØ´ç µð·ºÅä¸®°¡ ¾øÀ»°æ¿ì µð·ºÅä¸®¸¦ »ý¼ºÇÕ´Ï´Ù.
+		// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		if (!folder.exists()) {
 			try {
-				folder.mkdir(); // Æú´õ »ý¼ºÇÕ´Ï´Ù.
+				folder.mkdir(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 			} catch (Exception e) {
 				e.getStackTrace();
 			}
