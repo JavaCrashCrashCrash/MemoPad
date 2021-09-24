@@ -16,6 +16,7 @@ import com.memopad.model.Folder;
 import com.memopad.model.FolderManager;
 import com.memopad.model.ObjectManager;
 
+
 public class TreeGUI extends JPanel {
 	protected DefaultMutableTreeNode rootNode;
 	protected DefaultTreeModel treeModel;
@@ -33,25 +34,6 @@ public class TreeGUI extends JPanel {
 		tree.setEditable(true);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
-//		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
-			
-//			@Override
-//			public void valueChanged(TreeSelectionEvent e) {
-//				// TODO Auto-generated method stub
-//				DefaultMutableTreeNode selectedNode = 
-//					       (DefaultMutableTreeNode)tree.getLastSelectedPathComponent(); 
-//				System.out.println("selectedNode : " + selectedNode.getUserObject().toString());
-//			}
-//		});
-		
-//		tree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
-//			
-//			@Override
-//			public void valueChanged(TreeSelectionEvent e) {
-//				// TODO Auto-generated method stub
-//				System.out.println("selected");
-//			}
-//		});
 		JScrollPane scrollPane = new JScrollPane(tree);
 		add(scrollPane);
 	}
@@ -64,25 +46,26 @@ public class TreeGUI extends JPanel {
 
 	public void clear() {
 		rootNode.removeAllChildren();
-		treeModel.reload();
+//		treeModel.reload();
 	}
 
 	public void load() {
 		folderManager = ObjectManager.folderManager;
 		ArrayList<Folder> folders = folderManager.getFolderList();
 		DefaultMutableTreeNode folderNodes[] = new DefaultMutableTreeNode[folders.size()];
-		
 		for (int i = 0; i < folders.size(); i++) {
 			folderNodes[i] = new DefaultMutableTreeNode(folders.get(i).getTitle());
 			treeModel.insertNodeInto(folderNodes[i], rootNode, rootNode.getChildCount());
-			DefaultMutableTreeNode empty = new DefaultMutableTreeNode("No memo exists.");
-			treeModel.insertNodeInto(empty, folderNodes[i], folderNodes[i].getChildCount());
+//			DefaultMutableTreeNode empty = new DefaultMutableTreeNode("No memo exists.");
+//			treeModel.insertNodeInto(empty, folderNodes[i], folderNodes[i].getChildCount());
 		}
 	}
 
-	public void add() {
-		
-	}
+//	public void addCategory(String title) {
+//		DefaultMutableTreeNode category = new DefaultMutableTreeNode(title);
+//		treeModel.insertNodeInto(category, rootNode, rootNode.getChildCount());
+//		treeModel.reload();
+//	}
 	
 	
 }

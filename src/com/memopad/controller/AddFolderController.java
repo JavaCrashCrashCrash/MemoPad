@@ -8,6 +8,7 @@ import com.memopad.model.FolderManager;
 import com.memopad.model.ObjectManager;
 import com.memopad.view.GUI;
 
+
 public class AddFolderController extends KeyAdapter {
 	ObjectManager objectManager;
 	GUI gui;	
@@ -30,6 +31,7 @@ public class AddFolderController extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		 if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			 System.out.println("keyPressed");
 		      // Enter was pressed. Your code goes here.
 			 String title = gui.folderTitleField.getText();
 			 folderManager.addFolder(title);
