@@ -28,7 +28,6 @@ public class UiData {
 		// test code
 		ObjectManager.folderManager.testFolderList();
 		Folder a = ObjectManager.folderManager.getFolder(0);
-		a.testMemoList();
 	}
 	
 	public JButton getMemoSaveBtn() {

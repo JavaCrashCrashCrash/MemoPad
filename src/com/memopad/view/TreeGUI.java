@@ -14,6 +14,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import com.memopad.model.Folder;
 import com.memopad.model.FolderManager;
+import com.memopad.model.Memo;
 import com.memopad.model.ObjectManager;
 
 
@@ -46,16 +47,30 @@ public class TreeGUI extends JPanel {
 
 	public void clear() {
 		rootNode.removeAllChildren();
-//		treeModel.reload();
+		treeModel.reload();
 	}
 
 	public void load() {
 		folderManager = ObjectManager.folderManager;
 		ArrayList<Folder> folders = folderManager.getFolderList();
+
 		DefaultMutableTreeNode folderNodes[] = new DefaultMutableTreeNode[folders.size()];
+
 		for (int i = 0; i < folders.size(); i++) {
 			folderNodes[i] = new DefaultMutableTreeNode(folders.get(i).getTitle());
 			treeModel.insertNodeInto(folderNodes[i], rootNode, rootNode.getChildCount());
+			ArrayList<Memo> memos = folders.get(i).getMemos();
+			DefaultMutableTreeNode memoNodes[] = new DefaultMutableTreeNode[memos.size()];
+			if (memos.size() == 0) {
+				DefaultMutableTreeNode empty = new DefaultMutableTreeNode("No memo exists.");
+				treeModel.insertNodeInto(empty, folderNodes[i], folderNodes[i].getChildCount());
+			}
+			for (int j = 0; j < memos.size(); j++) {
+				memoNodes[j] = new DefaultMutableTreeNode(memos.get(i).getTitle());
+				treeModel.insertNodeInto(memoNodes[j], folderNodes[i], folderNodes[i].getChildCount());
+			}
+
+			
 //			DefaultMutableTreeNode empty = new DefaultMutableTreeNode("No memo exists.");
 //			treeModel.insertNodeInto(empty, folderNodes[i], folderNodes[i].getChildCount());
 		}

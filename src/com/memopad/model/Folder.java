@@ -13,14 +13,6 @@ public class Folder {
 		memos = new ArrayList<>();
 	}
 	
-	public void testMemoList() {
-		Memo a = new Memo("a", "a");
-		Memo b = new Memo("b", "b");
-		memos.add(a);
-		memos.add(b);
-	}
-	
-	
 	
 	public ArrayList<Memo> getMemoArrayList(Folder folder) {
 		return folder.memos;
