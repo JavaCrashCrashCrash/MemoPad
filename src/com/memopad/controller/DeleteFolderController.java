@@ -11,7 +11,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import com.memopad.model.ObjectManager;
 import com.memopad.view.GUI;
 
-public class DeleteFolderController implements ActionListener, TreeSelectionListener {
+public class DeleteFolderController implements ActionListener {
 	ObjectManager objectManager;
 	GUI gui;
 
@@ -23,6 +23,12 @@ public class DeleteFolderController implements ActionListener, TreeSelectionList
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.treeGUI.getSelectedNode();
+		if (selectedNode != null) {
+			objectManager.folderManager.setSelectedFolder(selectedNode.getUserObject().toString());
+//			System.out.println(folderTitle);
+		}
+		System.out.println(objectManager.folderManager.getSelectedFolder());
 		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + objectManager.folderManager.getSelectedFolder();
 		File folder = new File(path);
 		try {
@@ -35,22 +41,13 @@ public class DeleteFolderController implements ActionListener, TreeSelectionList
 
 				if (folderList.length == 0 && folder.isDirectory()) {
 					folder.delete(); // 대상폴더 삭제
-					objectManager.folderManager.deleteFolder(objectManager.folderManager.getFolderByTitle(objectManager.folderManager.getSelectedFolder()));
+					objectManager.folderManager.deleteFolder(objectManager.folderManager
+							.getFolderByTitle(objectManager.folderManager.getSelectedFolder()));
 					gui.treeGUI.reload();
 				}
 			}
 		} catch (Exception e1) {
 			e1.getStackTrace();
-		}
-	}
-
-	@Override
-	public void valueChanged(TreeSelectionEvent e) {
-		// TODO Auto-generated method stub
-		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.getTree().getLastSelectedPathComponent();
-		if (selectedNode != null) {
-			objectManager.folderManager.setSelectedFolder(selectedNode.getUserObject().toString());
-//			System.out.println(folderTitle);
 		}
 	}
 

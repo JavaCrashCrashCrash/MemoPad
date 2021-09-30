@@ -11,7 +11,7 @@ import com.memopad.model.Memo;
 import com.memopad.model.ObjectManager;
 import com.memopad.view.GUI;
 
-public class AddMemoController implements ActionListener, TreeSelectionListener {
+public class AddMemoController implements ActionListener {
 	ObjectManager objectManager;
 	GUI gui;
 
@@ -20,16 +20,12 @@ public class AddMemoController implements ActionListener, TreeSelectionListener 
 		this.gui = gui;
 	}
 
-	public void valueChanged(TreeSelectionEvent e) {
-		// TODO Auto-generated method stub
-		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.getTree().getLastSelectedPathComponent();
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.treeGUI.getSelectedNode();
 		if (selectedNode != null) {
 			objectManager.folderManager.setSelectedFolder(selectedNode.getUserObject().toString());
 		}
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
 		StringBuilder sb = new StringBuilder();
@@ -44,7 +40,6 @@ public class AddMemoController implements ActionListener, TreeSelectionListener 
 		Memo memo = new Memo(title, content);
 		objectManager.fileManager.writeMemo(objectManager.folderManager.getSelectedFolder(), memo);
 		objectManager.folderManager.getFolder(objectManager.folderManager.getSelectedFolder()).addMemo(memo);
-		System.out.println(objectManager.folderManager.getSelectedFolder());
 		gui.setMemoArea("");
 		gui.memoAddFrame.dispose();
 		gui.treeGUI.reload();

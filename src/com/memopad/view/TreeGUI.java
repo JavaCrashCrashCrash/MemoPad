@@ -23,6 +23,23 @@ public class TreeGUI extends JPanel {
 	protected DefaultTreeModel treeModel;
 	protected JTree tree;
 	private FolderManager folderManager;
+	DefaultMutableTreeNode selectedNode, parentNode;
+
+	public DefaultMutableTreeNode getParentNode() {
+		return parentNode;
+	}
+
+	public void setParentNode(DefaultMutableTreeNode parentNode) {
+		this.parentNode = parentNode;
+	}
+
+	public DefaultMutableTreeNode getSelectedNode() {
+		return selectedNode;
+	}
+
+	public void setSelectedNode(DefaultMutableTreeNode selectedNode) {
+		this.selectedNode = selectedNode;
+	}
 
 	public TreeGUI(FolderManager folderManager) {
 		super(new GridLayout(1, 0));
@@ -75,6 +92,8 @@ public class TreeGUI extends JPanel {
 //			treeModel.insertNodeInto(empty, folderNodes[i], folderNodes[i].getChildCount());
 		}
 	}
+	
+	
 
 //	public void addCategory(String title) {
 //		DefaultMutableTreeNode category = new DefaultMutableTreeNode(title);

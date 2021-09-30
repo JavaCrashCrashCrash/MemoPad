@@ -23,9 +23,11 @@ public class ButtonController {
 		gui = new GUI(objectManager);
 		folderManager = objectManager.folderManager;
 		fileManager = objectManager.fileManager;
-		AddMemoController addMemoController = new AddMemoController(objectManager, gui);
-		DeleteFolderController deleteFolderController = new DeleteFolderController(objectManager, gui);
-		DeleteMemoController deleteMemoController = new DeleteMemoController(objectManager, gui);
+//		AddMemoController addMemoController = new AddMemoController(objectManager, gui);
+//		DeleteFolderController deleteFolderController = new DeleteFolderController(objectManager, gui);
+//		DeleteMemoController deleteMemoController = new DeleteMemoController(objectManager, gui);
+		TreeNodeSetter treeNodeSetter = new TreeNodeSetter(objectManager, gui);
+		gui.getTree().getSelectionModel().addTreeSelectionListener(treeNodeSetter);
 
 		folderAddBtn = objectManager.uiData.getFolderAddBtn();
 		folderDeleteBtn = objectManager.uiData.getFolderDeleteBtn();
@@ -36,13 +38,14 @@ public class ButtonController {
 
 		folderAddBtn.addActionListener(new AddFolderUIController(objectManager, gui));
 		folderDeleteBtn.addActionListener(new DeleteFolderController(objectManager, gui));
-		gui.getTree().getSelectionModel().addTreeSelectionListener(deleteFolderController);
+//		gui.getTree().getSelectionModel().addTreeSelectionListener(deleteFolderController);
 		memoAddBtn.addActionListener(new AddMemoUIController(gui));
 		memoDeleteBtn.addActionListener(new DeleteMemoController(objectManager, gui));
-		gui.getTree().getSelectionModel().addTreeSelectionListener(deleteMemoController);
+//		gui.getTree().getSelectionModel().addTreeSelectionListener(deleteMemoController);
 		memoClearBtn.addActionListener(new ClearMemoController());
-		memoSaveBtn.addActionListener(addMemoController);
-		gui.getTree().getSelectionModel().addTreeSelectionListener(addMemoController);
+		memoSaveBtn.addActionListener(new AddMemoController(objectManager, gui));
+//		gui.getTree().getSelectionModel().addTreeSelectionListener(addMemoController);
+
 
 		folderList = objectManager.uiData.getFolderList();
 		folderList.addMouseListener(new FolderLoadingController(objectManager, gui));
