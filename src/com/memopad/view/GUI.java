@@ -60,7 +60,6 @@ public class GUI {
 	ObjectManager objectManager;
 	FolderManager folderManager;
 	ArrayList<Folder> folders;
-	// �뜝�떗�벝�삕 (field)
 
 	public GUI(ObjectManager objectManager) {
 		this.objectManager = objectManager;
