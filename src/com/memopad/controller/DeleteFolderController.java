@@ -35,6 +35,7 @@ public class DeleteFolderController implements ActionListener, TreeSelectionList
 
 				if (folderList.length == 0 && folder.isDirectory()) {
 					folder.delete(); // 대상폴더 삭제
+					objectManager.folderManager.deleteFolder(objectManager.folderManager.getFolderByTitle(objectManager.folderManager.getSelectedFolder()));
 					gui.treeGUI.reload();
 				}
 			}

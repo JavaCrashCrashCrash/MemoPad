@@ -2,6 +2,7 @@ package com.memopad.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
@@ -22,18 +23,20 @@ public class DeleteMemoController implements ActionListener, TreeSelectionListen
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + objectManager.folderManager.getSelectedFolder();
-		
-		
+		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + objectManager.folderManager.getSelectedFolder() + "\\" + objectManager.folderManager.getSelectedMemo() + ".txt";
+		System.out.println(path);
+		File memo = new File(path);	
+		memo.delete();
 	}
 
 	@Override
 	public void valueChanged(TreeSelectionEvent e) {
 		// TODO Auto-generated method stub
 		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.getTree().getLastSelectedPathComponent();
+		DefaultMutableTreeNode parent = (DefaultMutableTreeNode) selectedNode.getParent();
 		if (selectedNode != null) {
-			objectManager.folderManager.setSelectedFolder(selectedNode.getUserObject().toString());
-//			System.out.println(folderTitle);
+			objectManager.folderManager.setSelectedFolder(parent.getUserObject().toString());
+			objectManager.folderManager.setSelectedMemo(selectedNode.getUserObject().toString());
 		}
 
 	}

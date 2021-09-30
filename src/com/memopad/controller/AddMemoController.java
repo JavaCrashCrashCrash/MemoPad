@@ -25,7 +25,6 @@ public class AddMemoController implements ActionListener, TreeSelectionListener 
 		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.getTree().getLastSelectedPathComponent();
 		if (selectedNode != null) {
 			objectManager.folderManager.setSelectedFolder(selectedNode.getUserObject().toString());
-//			System.out.println(folderTitle);
 		}
 	}
 

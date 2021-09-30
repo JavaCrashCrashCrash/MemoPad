@@ -6,6 +6,7 @@ public class FolderManager {
 	ArrayList<Folder> folderArrayList;
 	FileManager fileManager;
 	String selectedFolderTitle;
+	String selectedMemoTitle;
 
 	public String getSelectedFolder() {
 		return selectedFolderTitle;
@@ -13,6 +14,14 @@ public class FolderManager {
 
 	public void setSelectedFolder(String selectedFolderTitle) {
 		this.selectedFolderTitle = selectedFolderTitle;
+	}
+	
+	public String getSelectedMemo() {
+		return selectedMemoTitle;
+	}
+	
+	public void setSelectedMemo(String selectedMemoTitle) {
+		this.selectedMemoTitle = selectedMemoTitle;
 	}
 
 	public FolderManager() {
@@ -73,6 +82,17 @@ public class FolderManager {
 
 	public void deleteFolder(Folder folder) {
 		folderArrayList.remove(folder);
+	}
+	
+	public Folder getFolderByTitle(String folderTitle) {
+		Folder folder;
+		for (int i = 0; i < folderArrayList.size(); i++) {
+			folder = folderArrayList.get(i);
+			if (folder.getTitle() == folderTitle) {
+				return folder;
+			}
+		}
+		return null;
 	}
 
 	public void printFolderAll() {
