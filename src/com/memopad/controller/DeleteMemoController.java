@@ -34,6 +34,10 @@ public class DeleteMemoController implements ActionListener {
 		System.out.println(path);
 		File memo = new File(path);
 		memo.delete();
+		objectManager.folderManager.getFolder(objectManager.folderManager.getSelectedFolder()).deleteMemo(objectManager.folderManager.getFolder(objectManager.folderManager.getSelectedFolder()).getMemo(objectManager.folderManager.getSelectedMemo())
+);
+		gui.treeGUI.reload();
+		
 	}
 
 }

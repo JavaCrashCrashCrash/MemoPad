@@ -54,7 +54,7 @@ public class FolderManager {
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return folder = new Folder("null", "null");
-		} 
+		}
 		
 		return folder = new Folder("null", "null");
 	}

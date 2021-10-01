@@ -18,20 +18,32 @@ public class Folder {
 		return folder.memos;
 	}
 	
+	public Memo getMemo(String title) {
+		Memo memo;
 
+		try {
+			for (int i = 0; i < memos.size(); i++) {
+				if (memos.get(i).getTitle() == title) {
+					memo = memos.get(i);
+					return memo;
+				}
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return memo = new Memo("null", "null");
+		}
+		
+		return memo = new Memo("null", "null");
+	}
 	
 	public String getTitle() { return title; }
 	
 	
-
 	public void setTitle(String title) { this.title = title; }
 
-	
 
 	public String getPath() {
 		return path;
 	}
-
 
 
 	public void setPath(String path) {
@@ -39,18 +51,14 @@ public class Folder {
 	}
 
 
-
 	public ArrayList<Memo> getMemos() {
 		return memos;
 	}
 
 
-
 	public void setMemos(ArrayList<Memo> memos) {
 		this.memos = memos;
 	}
-
-
 
 	public void addMemo(Memo memo) {
 		memos.add(memo);
