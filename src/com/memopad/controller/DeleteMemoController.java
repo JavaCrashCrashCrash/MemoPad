@@ -24,8 +24,10 @@ public class DeleteMemoController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.treeGUI.getSelectedNode();
 		if (selectedNode != null) {
-			objectManager.folderManager.setSelectedFolder(gui.treeGUI.getSelectedNode().getParent().toString());
-			objectManager.folderManager.setSelectedMemo(gui.treeGUI.getSelectedNode().getUserObject().toString());
+			String parentNodeTitle = gui.treeGUI.getSelectedNode().getParent().toString();
+			String currentNodeTitle = gui.treeGUI.getSelectedNode().getUserObject().toString();
+			objectManager.folderManager.setSelectedFolder(parentNodeTitle);
+			objectManager.folderManager.setSelectedMemo(currentNodeTitle);
 		}
 
 		// TODO Auto-generated method stub
