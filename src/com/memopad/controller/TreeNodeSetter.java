@@ -23,12 +23,10 @@ public class TreeNodeSetter implements TreeSelectionListener {
 		// TODO Auto-generated method stub
 		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.getTree().getLastSelectedPathComponent();
 		gui.treeGUI.setSelectedNode(selectedNode);
-		if(selectedNode.getParent() != null) {
+		if(selectedNode != null && selectedNode.getParent() != null) {
 			DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) selectedNode.getParent();
 			gui.treeGUI.setParentNode(parentNode);
 		}
-		
-		
 	}
 
 }
