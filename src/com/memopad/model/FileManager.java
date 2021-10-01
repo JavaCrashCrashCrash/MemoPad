@@ -7,6 +7,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 
 public class FileManager {
 
@@ -76,14 +81,50 @@ public class FileManager {
 	}
 
 	public ArrayList<String> readFolders() {
+		Map<String, ArrayList<String>> dirs = new HashMap<>();
+		
 		ArrayList<String> folderTitles = new ArrayList<>();
 		for (File info : new File(LOCAL_PATH).listFiles()) {
 			if (info.isDirectory()) {
 				String folderTitle = info.getName();
-				folderTitles.add(folderTitle);
+				ArrayList<String> memos = new ArrayList<>();
+				for (File memo : new File(LOCAL_PATH + folderTitle).listFiles()) {
+					String memoTitle = memo.getName();
+					memos.add(memoTitle);
+				}
+				dirs.put(folderTitle, memos);
+//				folderTitles.add(folderTitle);
+			
 			}
 		}
+		
 		return folderTitles;
-	}
+	} 
 	
+	public static void main(String[] args) {
+		Map<String, ArrayList<String>> dirs = new HashMap<>();
+		ArrayList<String> memos = new ArrayList<>();
+		memos.add("1.txt");
+		memos.add("2.txt");
+		
+		dirs.put("Folder3", memos);
+
+		ArrayList<String> memos2 = new ArrayList<>();
+		memos2.add("a.txt");
+		memos2.add("b.txt");
+		dirs.put("Folder2", memos);
+		
+		Set<String> key = dirs.keySet();
+		Iterator<String> it = key.iterator();
+		while(it.hasNext()) {
+			String folder = it.next();
+			System.out.println(folder);
+			ArrayList<String> memo = dirs.get(folder);
+			for (String m : memo) {
+				System.out.println(m);
+			}
+		}
+		
+		
+	}
 }
