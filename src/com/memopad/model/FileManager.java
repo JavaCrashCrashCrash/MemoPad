@@ -80,10 +80,9 @@ public class FileManager {
 		return sb.toString();
 	}
 
-	public ArrayList<String> readFolders() {
+	public Map<String, ArrayList<String>> readFolders() {
 		Map<String, ArrayList<String>> dirs = new HashMap<>();
-		
-		ArrayList<String> folderTitles = new ArrayList<>();
+	
 		for (File info : new File(LOCAL_PATH).listFiles()) {
 			if (info.isDirectory()) {
 				String folderTitle = info.getName();
@@ -98,7 +97,7 @@ public class FileManager {
 			}
 		}
 		
-		return folderTitles;
+		return dirs;
 	} 
 	
 	public static void main(String[] args) {
