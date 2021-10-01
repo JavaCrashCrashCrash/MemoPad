@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 public class FileManager {
 
+	public static final String LOCAL_PATH = "C:\\Users\\jang6\\Desktop\\MemoData\\";
+	
 	public FileManager() {
 
 	}
 
 	public void writeFolder(String title) {
-		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + title; 
+		String path = LOCAL_PATH + title; 
 		File folder = new File(path);
 
 		if (!folder.exists()) {
@@ -45,7 +47,7 @@ public class FileManager {
 			StringBuilder sb = new StringBuilder();
 			sb.append(memo.getTitle() + "\n");
 			sb.append(memo.getContent());
-			String memoPath = "C:\\Users\\jang6\\Desktop\\MemoData\\" + folderTitle + "\\" + memo.getTitle() + ".txt";
+			String memoPath = LOCAL_PATH + folderTitle + "\\" + memo.getTitle() + ".txt";
 			FileWriter fw;
 			System.out.println(memoPath);
 			fw = new FileWriter(memoPath);

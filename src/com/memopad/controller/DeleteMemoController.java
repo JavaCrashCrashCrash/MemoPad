@@ -24,20 +24,20 @@ public class DeleteMemoController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.treeGUI.getSelectedNode();
 		if (selectedNode != null) {
-			objectManager.folderManager.setSelectedFolder(gui.treeGUI.getSelectedNode().getParent().toString());
-			objectManager.folderManager.setSelectedMemo(gui.treeGUI.getSelectedNode().getUserObject().toString());
+			String parentNodeTitle = gui.treeGUI.getSelectedNode().getParent().toString();
+			String currentNodeTitle = gui.treeGUI.getSelectedNode().getUserObject().toString();
+
+			// TODO Auto-generated method stub
+			String path = objectManager.fileManager.LOCAL_PATH + parentNodeTitle + "\\" + currentNodeTitle + ".txt";
+			System.out.println(path);
+			File memo = new File(path);
+			memo.delete();
+			objectManager.folderManager.getFolder(parentNodeTitle)
+					.deleteMemo(objectManager.folderManager.getFolder(parentNodeTitle).getMemo(currentNodeTitle));
+
+			gui.treeGUI.reload();
 		}
 
-		// TODO Auto-generated method stub
-		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + objectManager.folderManager.getSelectedFolder() + "\\"
-				+ objectManager.folderManager.getSelectedMemo() + ".txt";
-		System.out.println(path);
-		File memo = new File(path);
-		memo.delete();
-		objectManager.folderManager.getFolder(objectManager.folderManager.getSelectedFolder()).deleteMemo(objectManager.folderManager.getFolder(objectManager.folderManager.getSelectedFolder()).getMemo(objectManager.folderManager.getSelectedMemo())
-);
-		gui.treeGUI.reload();
-		
 	}
 
 }

@@ -29,7 +29,7 @@ public class DeleteFolderController implements ActionListener {
 //			System.out.println(folderTitle);
 		}
 		System.out.println(objectManager.folderManager.getSelectedFolder());
-		String path = "C:\\Users\\jang6\\Desktop\\MemoData\\" + objectManager.folderManager.getSelectedFolder();
+		String path = objectManager.fileManager.LOCAL_PATH + objectManager.folderManager.getSelectedFolder();
 		File folder = new File(path);
 		try {
 			while (folder.exists()) {
