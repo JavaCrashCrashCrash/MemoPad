@@ -1,7 +1,9 @@
 package com.memopad.model;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,18 +11,18 @@ import java.util.ArrayList;
 public class FileManager {
 
 	public static final String LOCAL_PATH = "C:\\Users\\jang6\\Desktop\\MemoData\\";
-	
+
 	public FileManager() {
 
 	}
 
 	public void writeFolder(String title) {
-		String path = LOCAL_PATH + title; 
+		String path = LOCAL_PATH + title;
 		File folder = new File(path);
 
 		if (!folder.exists()) {
 			try {
-				folder.mkdir(); 
+				folder.mkdir();
 			} catch (Exception e) {
 				e.getStackTrace();
 			}
@@ -59,9 +61,29 @@ public class FileManager {
 			e.printStackTrace();
 		}
 	}
-	
-	public void read() {
-		
+
+	public String read() throws IOException {
+		FileReader fr = new FileReader(LOCAL_PATH);
+		BufferedReader br = new BufferedReader(fr);
+
+		String str = null;
+		StringBuilder sb = new StringBuilder();
+
+		while ((str = br.readLine()) != null) {
+			sb.append(str + "\n");
+		}
+		return sb.toString();
 	}
 
+	public ArrayList<String> readFolders() {
+		ArrayList<String> folderTitles = new ArrayList<>();
+		for (File info : new File(LOCAL_PATH).listFiles()) {
+			if (info.isDirectory()) {
+				String folderTitle = info.getName();
+				folderTitles.add(folderTitle);
+			}
+		}
+		return folderTitles;
+	}
+	
 }

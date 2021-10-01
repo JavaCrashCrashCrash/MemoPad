@@ -25,9 +25,6 @@ public class UiData {
 		memoArea = new JTextArea();
 		folderList = new JList();
 		memoList = new JList();
-		// test code
-		ObjectManager.folderManager.testFolderList();
-		Folder a = ObjectManager.folderManager.getFolder(0);
 	}
 	
 	public JButton getMemoSaveBtn() {

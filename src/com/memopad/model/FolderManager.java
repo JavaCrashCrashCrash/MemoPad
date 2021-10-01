@@ -7,6 +7,17 @@ public class FolderManager {
 	FileManager fileManager;
 	String selectedFolderTitle;
 	String selectedMemoTitle;
+	
+	public FolderManager() {
+		folderArrayList = new ArrayList<>();
+		fileManager = new FileManager();
+	}
+	
+	public void insertFolders(ArrayList<String> folderTitles) {
+		for (String folderTitle : folderTitles) {
+			addFolder(folderTitle);
+		}
+	}
 
 	public String getSelectedFolder() {
 		return selectedFolderTitle;
@@ -24,19 +35,6 @@ public class FolderManager {
 		this.selectedMemoTitle = selectedMemoTitle;
 	}
 
-	public FolderManager() {
-		folderArrayList = new ArrayList<>();
-		fileManager = new FileManager();
-	}
-
-	public void testFolderList() {
-		Folder a = new Folder("a", "desk");
-		Folder b = new Folder("b", "top");
-		addFolder(a);
-		addFolder(b);
-	}
-	
-	
 
 	public Folder getFolder(int index) {
 		return folderArrayList.get(index);
