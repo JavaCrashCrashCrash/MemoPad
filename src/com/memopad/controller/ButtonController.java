@@ -42,7 +42,7 @@ public class ButtonController {
 		memoAddBtn.addActionListener(new AddMemoUIController(gui));
 		memoDeleteBtn.addActionListener(new DeleteMemoController(objectManager, gui));
 //		gui.getTree().getSelectionModel().addTreeSelectionListener(deleteMemoController);
-		memoClearBtn.addActionListener(new ClearMemoController());
+		memoClearBtn.addActionListener(new ClearMemoController(objectManager, gui));
 		memoSaveBtn.addActionListener(new AddMemoController(objectManager, gui));
 //		gui.getTree().getSelectionModel().addTreeSelectionListener(addMemoController);
 
