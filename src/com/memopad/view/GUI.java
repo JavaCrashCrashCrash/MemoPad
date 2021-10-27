@@ -100,7 +100,7 @@ public class GUI {
 	}
 
 	public void folderAddUI() {
-		
+
 		folderAddFrame.setBounds(600, 400, 300, 150);
 		folderAddFrame.setVisible(true);
 		folderAddFrame.setResizable(false);
@@ -110,10 +110,10 @@ public class GUI {
 		folderAddLabel.setBounds(20, -20, 300, 100);
 		folderAddLabel.setFont(new Font("gulim", Font.PLAIN, 15));
 		folderAddFrame.add(folderAddLabel);
-		
+
 		folderTitleField = uiData.getFolderTitleField();
 		folderTitleField.setBounds(20, 50, 200, 30);
-		if (addFolderController == null) {			
+		if (addFolderController == null) {
 			folderTitleField.addKeyListener(addFolderController = new AddFolderController(objectManager, this));
 		}
 		folderAddFrame.add(folderTitleField);
@@ -194,11 +194,11 @@ public class GUI {
 	public void setFolderTitleField(String text) {
 		folderTitleField.setText(text);
 	}
-	
+
 	public JTree getTree() {
 		return treeGUI.tree;
 	}
-	
+
 	public void setMemoArea(String text) {
 		memoArea.setText(text);
 	}

@@ -12,10 +12,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-
 public class FileManager {
-
-	public static final String LOCAL_PATH = "C:\\Users\\jang6\\Desktop\\MemoData\\";
+	String directoryName = System.getProperty("user.dir");
+	public static final String LOCAL_PATH = System.getProperty("user.dir") + "\\MemoData\\";
 
 	public FileManager() {
 
@@ -67,7 +66,7 @@ public class FileManager {
 		}
 	}
 
-	public String read() throws IOException {
+	public String readMemo() throws IOException {
 		FileReader fr = new FileReader(LOCAL_PATH);
 		BufferedReader br = new BufferedReader(fr);
 
@@ -82,48 +81,55 @@ public class FileManager {
 
 	public Map<String, ArrayList<String>> readFolders() {
 		Map<String, ArrayList<String>> dirs = new HashMap<>();
-	
-		for (File info : new File(LOCAL_PATH).listFiles()) {
-			if (info.isDirectory()) {
-				String folderTitle = info.getName();
-				ArrayList<String> memos = new ArrayList<>();
-				for (File memo : new File(LOCAL_PATH + folderTitle).listFiles()) {
-					String memoTitle = memo.getName();
-					memos.add(memoTitle);
-				}
-				dirs.put(folderTitle, memos);
-//				folderTitles.add(folderTitle);
-			
-			}
-		}
-		
-		return dirs;
-	} 
-	
-	public static void main(String[] args) {
-		Map<String, ArrayList<String>> dirs = new HashMap<>();
-		ArrayList<String> memos = new ArrayList<>();
-		memos.add("1.txt");
-		memos.add("2.txt");
-		
-		dirs.put("Folder3", memos);
 
-		ArrayList<String> memos2 = new ArrayList<>();
-		memos2.add("a.txt");
-		memos2.add("b.txt");
-		dirs.put("Folder2", memos);
-		
-		Set<String> key = dirs.keySet();
-		Iterator<String> it = key.iterator();
-		while(it.hasNext()) {
-			String folder = it.next();
-			System.out.println(folder);
-			ArrayList<String> memo = dirs.get(folder);
-			for (String m : memo) {
-				System.out.println(m);
+		File file = new File(LOCAL_PATH);
+		boolean isExists = file.exists();
+
+		if (isExists) {
+			for (File info : new File(LOCAL_PATH).listFiles()) {
+				if (info.isDirectory()) {
+					String folderTitle = info.getName();
+					ArrayList<String> memos = new ArrayList<>();
+					for (File memo : new File(LOCAL_PATH + folderTitle).listFiles()) {
+						String memoTitle = memo.getName();
+						memos.add(memoTitle);
+					}
+					dirs.put(folderTitle, memos);
+//				folderTitles.add(folderTitle);
+
+				}
 			}
+			return dirs;
+		} else {
+			file.mkdir();
+			return dirs;
 		}
-		
-		
 	}
+
+//	public static void main(String[] args) {
+//		Map<String, ArrayList<String>> dirs = new HashMap<>();
+//		ArrayList<String> memos = new ArrayList<>();
+//		memos.add("1.txt");
+//		memos.add("2.txt");
+//		
+//		dirs.put("Folder3", memos);
+//
+//		ArrayList<String> memos2 = new ArrayList<>();
+//		memos2.add("a.txt");
+//		memos2.add("b.txt");
+//		dirs.put("Folder2", memos);
+//		
+//		Set<String> key = dirs.keySet();
+//		Iterator<String> it = key.iterator();
+//		while(it.hasNext()) {
+//			String folder = it.next();
+//			System.out.println(folder);
+//			ArrayList<String> memo = dirs.get(folder);
+//			for (String m : memo) {
+//				System.out.println(m);
+//			}
+//		}
+//		
+//		
+//	}
 }
