@@ -1,5 +1,6 @@
 package com.memopad.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,10 +15,14 @@ public class ObjectManager {
 		folderManager = new FolderManager();
 		fileManager = new FileManager();
 		uiData = new UiData();
-		init();
+		try {			
+			init();
+		} catch(IOException io) {
+			io.printStackTrace();
+		}
 	}
 
-	public void init() {
+	public void init() throws IOException {
 		Map<String, ArrayList<String>> dirs = fileManager.readFolders();
 
 		Set<String> key = dirs.keySet();
@@ -29,12 +34,15 @@ public class ObjectManager {
 		while (it.hasNext()) {
 			String folder = it.next();
 			folders.add(folder);
-			ArrayList<String> memo = dirs.get(folder);
-			for (String m : memo) {
-				System.out.println(m);
+			ArrayList<String> memoTitles = dirs.get(folder);
+			ArrayList<Memo> memos = new ArrayList<>();
+			for (String m : memoTitles) {
+				String memoContent = fileManager.readMemo(folder, m);
+				Memo memo = new Memo(m, memoContent);
+				memos.add(memo);
 			}
-//			folderManager.initFolders(folder, );
+			folderManager.initFolders(folder, memos);
 		}
-		folderManager.insertFolders(folders);
+//		folderManager.insertFolders(folders);
 	}
 }

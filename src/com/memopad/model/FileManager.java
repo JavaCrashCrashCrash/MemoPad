@@ -65,9 +65,13 @@ public class FileManager {
 			e.printStackTrace();
 		}
 	}
+	public static void main(String[] args) throws IOException {
+		String str = new FileManager().readMemo("memos", "memo1.txt");
+		System.out.println(str);
+	}
 
-	public String readMemo(String folderTitle) throws IOException {
-		FileReader fr = new FileReader(LOCAL_PATH + folderTitle);
+	public String readMemo(String folderTitle, String memoTitle) throws IOException {
+		FileReader fr = new FileReader(LOCAL_PATH + folderTitle + "/" + memoTitle);
 		BufferedReader br = new BufferedReader(fr);
 
 		String str = null;
