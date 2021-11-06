@@ -66,8 +66,8 @@ public class FileManager {
 		}
 	}
 
-	public String readMemo() throws IOException {
-		FileReader fr = new FileReader(LOCAL_PATH);
+	public String readMemo(String folderTitle) throws IOException {
+		FileReader fr = new FileReader(LOCAL_PATH + folderTitle);
 		BufferedReader br = new BufferedReader(fr);
 
 		String str = null;
@@ -84,7 +84,6 @@ public class FileManager {
 
 		File file = new File(LOCAL_PATH);
 		boolean isExists = file.exists();
-
 		if (isExists) {
 			for (File info : new File(LOCAL_PATH).listFiles()) {
 				if (info.isDirectory()) {

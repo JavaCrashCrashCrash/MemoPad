@@ -13,6 +13,12 @@ public class Folder {
 		memos = new ArrayList<>();
 	}
 	
+	public Folder (String title, ArrayList<Memo> memos) {
+		this.title = title;
+		this.memos = memos;
+	}
+	
+	
 	
 	public ArrayList<Memo> getMemoArrayList(Folder folder) {
 		return folder.memos;

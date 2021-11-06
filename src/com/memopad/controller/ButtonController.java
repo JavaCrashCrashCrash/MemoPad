@@ -15,7 +15,7 @@ public class ButtonController {
 	private JList folderList, memoList;
 	private JTextField folderTitleField;
 
-	GUI gui;
+	public GUI gui;
 	FileManager fileManager;
 	FolderManager folderManager;
 
@@ -51,6 +51,9 @@ public class ButtonController {
 		folderList.addMouseListener(new FolderLoadingController(objectManager, gui));
 
 		folderTitleField = objectManager.uiData.getFolderTitleField();
+		
+//		memoList = 
+//		memoList.addMouseListener(new MemoLoadingController(objectManager, gui));
 
 //		gui.mainFrame.addT;
 

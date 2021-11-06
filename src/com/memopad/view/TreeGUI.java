@@ -17,7 +17,6 @@ import com.memopad.model.FolderManager;
 import com.memopad.model.Memo;
 import com.memopad.model.ObjectManager;
 
-
 public class TreeGUI extends JPanel {
 	protected DefaultMutableTreeNode rootNode;
 	protected DefaultTreeModel treeModel;

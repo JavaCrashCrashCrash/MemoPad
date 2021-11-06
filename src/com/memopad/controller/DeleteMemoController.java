@@ -30,7 +30,6 @@ public class DeleteMemoController implements ActionListener {
 
 			// TODO Auto-generated method stub
 			String path = objectManager.fileManager.LOCAL_PATH + parentNodeTitle + "\\" + currentNodeTitle + ".txt";
-			System.out.println(path);
 			File memo = new File(path);
 			memo.delete();
 			objectManager.folderManager.getFolder(parentNodeTitle)

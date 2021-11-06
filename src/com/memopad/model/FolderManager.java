@@ -7,12 +7,12 @@ public class FolderManager {
 	FileManager fileManager;
 	String selectedFolderTitle;
 	String selectedMemoTitle;
-	
+
 	public FolderManager() {
 		folderArrayList = new ArrayList<>();
 		fileManager = new FileManager();
 	}
-	
+
 	public void insertFolders(ArrayList<String> folderTitles) {
 		for (String folderTitle : folderTitles) {
 			addFolder(folderTitle);
@@ -26,15 +26,14 @@ public class FolderManager {
 	public void setSelectedFolder(String selectedFolderTitle) {
 		this.selectedFolderTitle = selectedFolderTitle;
 	}
-	
+
 	public String getSelectedMemo() {
 		return selectedMemoTitle;
 	}
-	
+
 	public void setSelectedMemo(String selectedMemoTitle) {
 		this.selectedMemoTitle = selectedMemoTitle;
 	}
-
 
 	public Folder getFolder(int index) {
 		return folderArrayList.get(index);
@@ -53,7 +52,7 @@ public class FolderManager {
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return folder = new Folder("null", "null");
 		}
-		
+
 		return folder = new Folder("null", "null");
 	}
 
@@ -64,7 +63,11 @@ public class FolderManager {
 	public void addFolder(String title) {
 		Folder folder = new Folder(title, "");
 		addFolder(folder);
+	}
 
+	public void initFolders(String title, ArrayList<Memo> memos) {
+		Folder folder = new Folder(title, memos);
+		folderArrayList.add(folder);
 	}
 
 	public void addFolder(Folder folder) {
@@ -81,7 +84,7 @@ public class FolderManager {
 	public void deleteFolder(Folder folder) {
 		folderArrayList.remove(folder);
 	}
-	
+
 	public Folder getFolderByTitle(String folderTitle) {
 		Folder folder;
 		for (int i = 0; i < folderArrayList.size(); i++) {

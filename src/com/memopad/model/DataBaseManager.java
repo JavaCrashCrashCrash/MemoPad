@@ -17,7 +17,7 @@ public class DataBaseManager {
 
 			System.out.println("DB 연결 완료");
 		} catch (ClassNotFoundException e) {
-			System.out.println("JDBC 드라이버 로드 에러");
+			System.out.println("JDBC 드라이버 로드 에러" + e.getMessage());
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			System.out.println("DB 연결 에러");
@@ -56,7 +56,7 @@ public class DataBaseManager {
 	public static void main(String[] args) {
 		DataBaseManager dataBaseManager = new DataBaseManager();
 		dataBaseManager.connect();
-		dataBaseManager.insert("jjj", "152");
+//		dataBaseManager.insert("jjj", "152");
 		dataBaseManager.selectAll();
 	}
 }

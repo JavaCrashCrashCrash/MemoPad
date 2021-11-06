@@ -16,25 +16,25 @@ public class ObjectManager {
 		uiData = new UiData();
 		init();
 	}
-	
+
 	public void init() {
 		Map<String, ArrayList<String>> dirs = fileManager.readFolders();
-		
-		
+
 		Set<String> key = dirs.keySet();
-		
-		
+
 		Iterator<String> it = key.iterator();
-		
-		
-		while(it.hasNext()) {
+
+		ArrayList<String> folders = new ArrayList<String>();
+
+		while (it.hasNext()) {
 			String folder = it.next();
-			System.out.println(folder);
+			folders.add(folder);
 			ArrayList<String> memo = dirs.get(folder);
 			for (String m : memo) {
 				System.out.println(m);
 			}
+//			folderManager.initFolders(folder, );
 		}
-		
+		folderManager.insertFolders(folders);
 	}
 }
