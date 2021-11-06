@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.memopad.model.Folder;
+import com.memopad.model.Memo;
 import com.memopad.model.ObjectManager;
 import com.memopad.view.GUI;
 
@@ -25,14 +26,12 @@ public class MemoLoadingController extends ObjectManager implements MouseListene
 		if (e.getClickCount() == 2) {
 			DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) gui.treeGUI.getSelectedNode();
 
-			if (selectedNode != null) {
+			if (selectedNode != null && selectedNode.getChildCount() == 0) {
 				String parentNodeTitle = gui.treeGUI.getSelectedNode().getParent().toString();
 				String currentNodeTitle = gui.treeGUI.getSelectedNode().getUserObject().toString();
-				System.out.println(parentNodeTitle + " " + currentNodeTitle);
-				ArrayList<Folder> folders = ObjectManager.folderManager.getFolderList();
-//				Folder folder = folders.get(index);
-
-//				gui.memoUI(folder);
+				Folder folder = ObjectManager.folderManager.getFolder(parentNodeTitle);
+				Memo memo = folder.getMemo(currentNodeTitle);
+				gui.memoAddUI(memo);
 			}
 
 		}

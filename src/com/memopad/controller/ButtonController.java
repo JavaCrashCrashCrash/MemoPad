@@ -53,7 +53,7 @@ public class ButtonController {
 		folderTitleField = objectManager.uiData.getFolderTitleField();
 		
 //		memoList = 
-//		memoList.addMouseListener(new MemoLoadingController(objectManager, gui));
+		gui.getTree().addMouseListener(new MemoLoadingController(objectManager, gui));
 
 //		gui.mainFrame.addT;
 
